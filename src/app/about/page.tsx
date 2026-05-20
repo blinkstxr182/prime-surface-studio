@@ -1,0 +1,223 @@
+﻿import React from "react";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Shield, Award, Users, Target } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { StatsCounter } from "@/components/sections/StatsCounter";
+import { CTABanner } from "@/components/sections/CTABanner";
+import { FadeUp, StaggerContainer, StaggerItem } from "@/components/ui/motion";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
+import { generatePageMetadata } from "@/lib/seo";
+import { siteConfig } from "@/lib/site-config";
+
+export const metadata: Metadata = generatePageMetadata({
+  title: "About Prime Surface Studio | Montclair's Trusted Tint & Wrap Experts",
+  description:
+    "Locally owned and operated in Montclair, CA. Factory-trained installers with a passion for precision. Learn why the Inland Empire trusts Prime Surface Studio.",
+  path: "/about",
+});
+
+const values = [
+  {
+    icon: Target,
+    title: "Our Mission",
+    description:
+      "To deliver flawless window tinting and vehicle wrap installations that protect our clients' investments, enhance their vehicles and properties, and reflect the pride they take in ownership.",
+  },
+  {
+    icon: Users,
+    title: "Our Vision",
+    description:
+      "To be the Inland Empire's most trusted surface transformation studio — setting the standard for quality, transparency, and customer experience in the automotive and architectural space.",
+  },
+  {
+    icon: Shield,
+    title: "Our Values",
+    description:
+      "Integrity in every quote. Precision in every install. Accountability if anything isn't perfect. We treat every vehicle like it's our own and every client like family.",
+  },
+];
+
+const certifications = [
+  "3M Authorized Installer",
+  "Avery Dennison Certified",
+  "XPEL Authorized Dealer",
+  "SunTek Certified Installer",
+  "Llumar Authorized Retailer",
+  "PDAA Member",
+];
+
+export default function AboutPage() {
+  return (
+    <>
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", url: siteConfig.url },
+          { name: "About", url: `${siteConfig.url}/about` },
+        ])}
+      />
+
+      {/* Hero */}
+      <section className="relative py-28 overflow-hidden bg-[#0A0A0A]">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/about/hero.jpg"
+            alt="Prime Surface Studio professional installers at work in Montclair CA"
+            fill
+            className="object-cover opacity-20"
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/60 to-[#0A0A0A]" />
+        </div>
+        <div className="relative w-full px-4 sm:px-6 lg:px-10 xl:px-16 text-center">
+          <FadeUp>
+            <p className="text-[#C6F73C] text-sm font-semibold tracking-[0.2em] uppercase mb-4">About Us</p>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6">
+              Built on Precision.<br />Driven by Passion.
+            </h1>
+            <p className="text-white/60 text-xl max-w-2xl mx-auto">
+              Montclair&apos;s locally owned window tinting and vehicle wrap studio — where craftsmanship meets obsession.
+            </p>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* Story */}
+      <section className="py-24 bg-[#0A0A0A]">
+        <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <FadeUp>
+              <div className="relative aspect-square lg:aspect-auto lg:h-[500px] rounded-2xl overflow-hidden">
+                <Image
+                  src="/images/about/story.jpg"
+                  alt="Prime Surface Studio team installing vinyl wrap at our Montclair CA shop"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/40 to-transparent" />
+              </div>
+            </FadeUp>
+            <FadeUp delay={0.2}>
+              <p className="text-[#C6F73C] text-sm font-semibold tracking-[0.2em] uppercase mb-4">Our Story</p>
+              <h2 className="text-3xl sm:text-4xl font-black text-white mb-6">
+                Montclair-Born. Inland Empire Proud.
+              </h2>
+              <div className="space-y-4 text-white/60 leading-relaxed">
+                <p>
+                  Prime Surface Studio was founded with a single obsession: doing the work right. Not fast, not cheap — right. We started as automotive enthusiasts who couldn&apos;t find a local shop that shared our standards, so we built one. From day one in Montclair, our approach has been factory-level precision on every installation.
+                </p>
+                <p>
+                  Over the years, we expanded from automotive window tinting to a full-spectrum surface transformation studio — vehicle wraps, fleet graphics, residential and commercial window film, and architectural surface wraps. Each expansion came from clients asking us to bring our standard of work to new challenges. We always said yes.
+                </p>
+                <p>
+                  Today, Prime Surface Studio serves clients across the Inland Empire — from Montclair and Ontario to Rancho Cucamonga, Pomona, Upland, and beyond. Our team of factory-trained installers uses only premium materials from brands like XPEL, 3M, Avery Dennison, SunTek, and Llumar, and we back every job with warranties that prove our confidence in the work.
+                </p>
+              </div>
+              <div className="mt-8">
+                <Link href="/quote">
+                  <Button variant="primary" size="lg">
+                    Start Your Project <ArrowRight className="w-5 h-5" />
+                  </Button>
+                </Link>
+              </div>
+            </FadeUp>
+          </div>
+        </div>
+      </section>
+
+      <StatsCounter />
+
+      {/* Values */}
+      <section className="py-24 bg-[#111] border-y border-white/5">
+        <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16">
+          <FadeUp className="text-center mb-16">
+            <p className="text-[#C6F73C] text-sm font-semibold tracking-[0.2em] uppercase mb-3">What Drives Us</p>
+            <h2 className="text-3xl sm:text-4xl font-black text-white">Mission, Vision &amp; Values</h2>
+          </FadeUp>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {values.map((v) => (
+              <StaggerItem key={v.title}>
+                <div className="p-8 rounded-xl border border-white/10 bg-[#0A0A0A] h-full text-center">
+                  <div className="w-14 h-14 rounded-full bg-[#C6F73C]/10 border border-[#C6F73C]/30 flex items-center justify-center mx-auto mb-5">
+                    <v.icon className="w-7 h-7 text-[#C6F73C]" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-4">{v.title}</h3>
+                  <p className="text-white/50 text-sm leading-relaxed">{v.description}</p>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Why Us */}
+      <section className="py-24 bg-[#0A0A0A]">
+        <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <FadeUp>
+              <p className="text-[#C6F73C] text-sm font-semibold tracking-[0.2em] uppercase mb-4">Why Choose Us</p>
+              <h2 className="text-3xl sm:text-4xl font-black text-white mb-6">
+                Standards Most Shops Don&apos;t Have
+              </h2>
+              <div className="space-y-4">
+                {[
+                  "Factory-trained, certified installers — not weekend warriors",
+                  "Only premium film brands — XPEL, 3M, Avery Dennison, SunTek, Llumar, KPMF",
+                  "Climate-controlled installation suite — no dust, no bubbles",
+                  "Meticulous prep work — clean paint is the foundation of every great wrap",
+                  "Lifetime warranty on ceramic tint, 2–5 year warranty on wraps",
+                  "Transparent, itemized quotes — no surprise charges",
+                  "Over 87 five-star Google reviews from verified Inland Empire clients",
+                ].map((point) => (
+                  <div key={point} className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-[#C6F73C]/20 border border-[#C6F73C]/40 flex items-center justify-center shrink-0 mt-0.5">
+                      <div className="w-2 h-2 rounded-full bg-[#C6F73C]" />
+                    </div>
+                    <p className="text-white/70 text-sm leading-relaxed">{point}</p>
+                  </div>
+                ))}
+              </div>
+            </FadeUp>
+            <FadeUp delay={0.2}>
+              <div className="relative aspect-video rounded-2xl overflow-hidden">
+                <Image
+                  src="/images/about/why-us.jpg"
+                  alt="Precision window tint installation at Prime Surface Studio Montclair"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+            </FadeUp>
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications */}
+      <section className="py-20 bg-[#111] border-y border-white/5">
+        <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16">
+          <FadeUp className="text-center mb-12">
+            <p className="text-[#C6F73C] text-sm font-semibold tracking-[0.2em] uppercase mb-3">Certifications &amp; Partners</p>
+            <h2 className="text-3xl font-black text-white">Industry-Certified. Brand-Trusted.</h2>
+          </FadeUp>
+          <StaggerContainer className="flex flex-wrap justify-center gap-4">
+            {certifications.map((cert) => (
+              <StaggerItem key={cert}>
+                <div className="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-white/60 text-sm font-medium flex items-center gap-2">
+                  <Award className="w-4 h-4 text-[#C6F73C]" />
+                  {cert}
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      <CTABanner />
+    </>
+  );
+}
