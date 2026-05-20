@@ -25,7 +25,7 @@ export const siteConfig = {
     instagram: "https://www.instagram.com/primesurfacestudio/",
     facebook: "https://www.facebook.com/profile.php?id=61567503773102",
     tiktok: "https://www.tiktok.com/@primesurfacestudio",
-    google: "#",
+    google: "https://share.google/7BDD5eSqoikuZV6RF",
   },
   geo: {
     lat: 34.0775,
