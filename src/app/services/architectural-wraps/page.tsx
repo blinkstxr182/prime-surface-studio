@@ -49,9 +49,9 @@ export default function ArchitecturalWrapsPage() {
           </>
         }
         galleryImages={[
-          { src: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80", alt: "Architectural wrap office interior surface film Inland Empire" },
-          { src: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80", alt: "DI-NOC elevator wrap commercial building Montclair CA" },
-          { src: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80", alt: "Feature wall architectural film texture surface wrap" },
+          { src: "/images/services/architectural-wraps/gallery-1.jpg", alt: "Architectural wrap office interior surface film Inland Empire" },
+          { src: "/images/services/architectural-wraps/gallery-2.jpg", alt: "DI-NOC elevator wrap commercial building Montclair CA" },
+          { src: "/images/services/architectural-wraps/gallery-3.jpg", alt: "Feature wall architectural film texture surface wrap" },
         ]}
       />
     </>
