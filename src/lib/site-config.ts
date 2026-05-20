@@ -22,9 +22,9 @@ export const siteConfig = {
     shortWeekdays: "Mon–Sat 9AM–6PM",
   },
   social: {
-    instagram: "#",
-    facebook: "#",
-    tiktok: "#",
+    instagram: "https://www.instagram.com/primesurfacestudio/",
+    facebook: "https://www.facebook.com/profile.php?id=61567503773102",
+    tiktok: "https://www.tiktok.com/@primesurfacestudio",
     google: "#",
   },
   geo: {
