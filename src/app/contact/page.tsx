@@ -10,7 +10,7 @@ import { generatePageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = generatePageMetadata({
-  title: "Contact Prime Surface Studio | Window Tinting & Wraps Montclair CA",
+  title: "Contact Prime Surface Studio | Vehicle Wraps & Brand Design Montclair CA",
   description:
     "Contact Prime Surface Studio in Montclair, CA. Call (562) 733-9672, email us, or fill out our form. Open Mon–Sat 9AM–6PM. Free consultations available.",
   path: "/contact",
@@ -25,7 +25,7 @@ const contactFaqs = [
   {
     question: "Do I need an appointment?",
     answer:
-      "We recommend calling ahead to book an appointment, especially for wrap projects that require longer installation windows. Window tinting appointments can often be booked same-week.",
+      "We recommend calling ahead to book an appointment, especially for wrap projects that require longer installation windows. Design consultations and smaller projects can often be booked within the same week.",
   },
   {
     question: "Do you offer free estimates?",

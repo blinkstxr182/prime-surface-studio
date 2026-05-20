@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Prime Surface Studio",
-  tagline: "Premium Window Tinting & Vehicle Wraps",
+  tagline: "Premium Vehicle Wraps, UTV Wraps & Brand Design",
   description:
-    "Montclair's premier car wrap and window tinting specialists. Serving the Inland Empire with precision installations, premium materials, and lifetime warranties.",
+    "Montclair's premier vehicle wrap, UTV / side-by-side wrap, and brand design studio. Serving the Inland Empire and Southern California with precision installations, premium materials, and custom design that elevates every project.",
   url: "https://www.primesurfacestudio.com",
   address: {
     street: "5505 Moreno St, Suite 105 B",
@@ -14,7 +14,7 @@ export const siteConfig = {
   contact: {
     phone: "+15627339672",
     phoneDisplay: "(562) 733-9672",
-    email: "info@primesurfacestudio.com",
+    email: "primesurfacestudio@gmail.com",
   },
   hours: {
     weekdays: "Monday – Saturday: 9:00 AM – 6:00 PM",

@@ -14,7 +14,7 @@ interface CTABannerProps {
 
 export function CTABanner({
   headline = "Ready to Transform Your Vehicle or Property?",
-  subtext = "Get a free, no-obligation quote from Montclair's most trusted wrap and tinting professionals.",
+  subtext = "Get a free, no-obligation quote from Montclair's most trusted wrap and brand design studio.",
   primaryLabel = "Get a Free Quote",
   primaryHref = "/quote",
 }: CTABannerProps) {

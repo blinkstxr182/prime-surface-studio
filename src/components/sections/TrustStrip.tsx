@@ -5,11 +5,11 @@ import { Marquee } from "@/components/ui/Marquee";
 const badges = [
   { icon: Shield, label: "Licensed & Insured" },
   { icon: Award, label: "Lifetime Warranty Available" },
-  { icon: CheckCircle, label: "3M & Avery Certified Installer" },
+  { icon: CheckCircle, label: "3M, Avery, XPEL & KPMF Certified Installer" },
   { icon: Star, label: "5-Star Rated on Google" },
   { icon: Wrench, label: "1,000+ Vehicles Wrapped" },
-  { icon: Zap, label: "Same-Day Appointments" },
-  { icon: Sparkles, label: "Premium Films Only" },
+  { icon: Sparkles, label: "Design + Install Under One Roof" },
+  { icon: Zap, label: "Premium Cast Films Only" },
 ];
 
 export function TrustStrip() {

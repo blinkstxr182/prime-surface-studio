@@ -42,7 +42,7 @@ export function HomeHero() {
       >
         <Image
           src="/images/hero-home.jpg"
-          alt="Luxury car with premium ceramic window tint and vinyl wrap in Montclair CA"
+          alt="Premium vinyl car wrap installation by Prime Surface Studio in Montclair CA"
           fill
           className="object-cover object-center scale-110"
           priority
@@ -84,15 +84,15 @@ export function HomeHero() {
             >
               <Star className="w-3.5 h-3.5 fill-current" />
             </motion.span>
-            Montclair&apos;s #1 Rated Tint &amp; Wrap Studio
+            Montclair&apos;s #1 Rated Wrap &amp; Design Studio
           </motion.div>
 
           {/* H1 — word-by-word reveal */}
           <h1 className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-black text-white leading-[0.95] mb-6 tracking-tight">
-            <AnimatedHeading text="Premium Window Tinting" />
+            <AnimatedHeading text="Premium Vehicle Wraps," />
             <br />
             <AnimatedHeading
-              text="& Vehicle Wraps"
+              text="UTV Wraps & Brand Design"
               delay={0.3}
               className="text-[#C6F73C]"
             />
@@ -106,8 +106,8 @@ export function HomeHero() {
             transition={{ duration: 0.7, delay: 1, ease: "easeOut" }}
             className="text-white/70 text-lg sm:text-xl max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed"
           >
-            Precision-installed ceramic window tint, full car wraps, fleet graphics, and architectural film using only premium brands —{" "}
-            <span className="text-white font-semibold">XPEL, 3M, and Avery Dennison.</span>
+            Vehicle wraps, luxury & exotic car wraps, food truck graphics, fleet branding, UTV & side-by-side wraps, and full brand identity design — all under one roof using premium films from{" "}
+            <span className="text-white font-semibold">XPEL, 3M, Avery Dennison, and KPMF.</span>
           </motion.p>
 
           <motion.div

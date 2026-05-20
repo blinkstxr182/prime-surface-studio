@@ -16,9 +16,9 @@ import { homeFaqs } from "@/content/faqs";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Window Tinting & Car Wraps in Montclair, CA | Prime Surface Studio",
+  title: "Car Wraps, UTV Wraps & Brand Design in Montclair, CA | Prime Surface Studio",
   description:
-    "Montclair's #1 car wrap & window tinting shop. Ceramic tints, vinyl wraps, fleet graphics & architectural film. Lifetime warranty. Call (562) 733-9672 for a free quote.",
+    "Montclair's premier vehicle wrap, UTV / side-by-side wrap & brand identity studio. Vinyl wraps, luxury & exotic car wraps, fleet graphics, off-road UTV wraps, architectural film, and design services. Call (562) 733-9672 for a free quote.",
   alternates: { canonical: siteConfig.url },
 };
 
@@ -30,17 +30,17 @@ const whyUs = [
   },
   {
     title: "Premium Materials Only",
-    description: "XPEL, 3M, Avery Dennison, SunTek, Llumar — we never use unbranded films.",
+    description: "XPEL, 3M, Avery Dennison, KPMF, Inozetek — we never use unbranded films.",
     icon: "🏆",
   },
   {
-    title: "In-Shop & Mobile Service",
-    description: "Visit our Montclair studio or we'll come to your home or fleet yard.",
-    icon: "🚗",
+    title: "Design + Install Under One Roof",
+    description: "Our in-house design team builds brand identities, vehicle livery, and wrap artwork — then we install it.",
+    icon: "🎨",
   },
   {
     title: "Satisfaction Guaranteed",
-    description: "Lifetime warranty on ceramic tint. We stand behind every single installation.",
+    description: "Multi-year installation warranties on every project. We stand behind every wrap.",
     icon: "✅",
   },
 ];
@@ -53,9 +53,9 @@ const processSteps = [
 ];
 
 const galleryImages = [
-  { src: "/images/gallery/1.jpg", alt: "Tesla Model 3 with ceramic window tint installed in Montclair CA" },
+  { src: "/images/gallery/1.jpg", alt: "Custom car wrap installed in Montclair CA — Prime Surface Studio" },
   { src: "/images/gallery/2.jpg", alt: "Custom matte black vinyl car wrap near Rancho Cucamonga" },
-  { src: "/images/gallery/3.jpg", alt: "Commercial window tinting for office building in Inland Empire" },
+  { src: "/images/gallery/3.jpg", alt: "Luxury vehicle wrap with premium XPEL Stealth film Inland Empire" },
   { src: "/images/gallery/4.jpg", alt: "Custom food truck wrap with full color graphics in Los Angeles" },
   { src: "/images/gallery/5.jpg", alt: "Fleet vehicle branding wrap for commercial vans in Inland Empire" },
   { src: "/images/gallery/6.jpg", alt: "Architectural DI-NOC surface wrap for office interior renovation" },
@@ -160,7 +160,7 @@ export default function HomePage() {
       <FAQSection
         faqs={homeFaqs}
         title="Common Questions"
-        subtitle="Everything you need to know about window tinting and vehicle wraps in Montclair, CA."
+        subtitle="Everything you need to know about vehicle wraps, UTV wraps, and brand design in Montclair, CA."
       />
 
       <CTABanner />

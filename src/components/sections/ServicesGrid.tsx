@@ -22,7 +22,7 @@ export function ServicesGrid() {
             Everything Your Vehicle &amp; Property Needs
           </h2>
           <p className="text-white/50 text-lg max-w-2xl mx-auto">
-            From ceramic window tint to full vehicle wraps and architectural surface films — precision installed in Montclair, CA.
+            From luxury vehicle wraps and food truck branding to UTV liveries and full brand identities — precision installed and designed in Montclair, CA.
           </p>
         </FadeUp>
 

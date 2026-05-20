@@ -23,10 +23,12 @@ export function AnimatedHeading({
   const shouldReduce = useReducedMotion();
   const words = text.split(" ");
 
+  // SSR-safe: always initial="hidden" so server + client agree on opacity:0/y:24.
+  // Reduced-motion shrinks duration to 0 — visible state is reached instantly.
   return (
     <motion.span
       className={className}
-      initial={shouldReduce ? false : "hidden"}
+      initial="hidden"
       animate="visible"
       transition={{ staggerChildren: shouldReduce ? 0 : 0.07, delayChildren: shouldReduce ? 0 : delay }}
       style={{ display: "inline" }}

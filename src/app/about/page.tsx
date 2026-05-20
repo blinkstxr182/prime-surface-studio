@@ -13,9 +13,9 @@ import { generatePageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = generatePageMetadata({
-  title: "About Prime Surface Studio | Montclair's Trusted Tint & Wrap Experts",
+  title: "About Prime Surface Studio | Montclair's Wrap & Brand Design Experts",
   description:
-    "Locally owned and operated in Montclair, CA. Factory-trained installers with a passion for precision. Learn why the Inland Empire trusts Prime Surface Studio.",
+    "Locally owned in Montclair, CA. Factory-trained wrap installers and in-house designers — the Inland Empire's trusted studio for vehicle wraps, UTV wraps, and brand identity.",
   path: "/about",
 });
 
@@ -24,7 +24,7 @@ const values = [
     icon: Target,
     title: "Our Mission",
     description:
-      "To deliver flawless window tinting and vehicle wrap installations that protect our clients' investments, enhance their vehicles and properties, and reflect the pride they take in ownership.",
+      "To design and install flawless vehicle wraps, off-road UTV wraps, and brand identities that protect our clients' investments, elevate their visual presence, and reflect the pride they take in ownership.",
   },
   {
     icon: Users,
@@ -44,8 +44,8 @@ const certifications = [
   "3M Authorized Installer",
   "Avery Dennison Certified",
   "XPEL Authorized Dealer",
-  "SunTek Certified Installer",
-  "Llumar Authorized Retailer",
+  "KPMF Certified Installer",
+  "Inozetek Authorized Retailer",
   "PDAA Member",
 ];
 
@@ -79,7 +79,7 @@ export default function AboutPage() {
               Built on Precision.<br />Driven by Passion.
             </h1>
             <p className="text-white/60 text-xl max-w-2xl mx-auto">
-              Montclair&apos;s locally owned window tinting and vehicle wrap studio — where craftsmanship meets obsession.
+              Montclair&apos;s locally owned vehicle wrap, UTV wrap, and brand design studio — where craftsmanship meets obsession.
             </p>
           </FadeUp>
         </div>
@@ -111,10 +111,10 @@ export default function AboutPage() {
                   Prime Surface Studio was founded with a single obsession: doing the work right. Not fast, not cheap — right. We started as automotive enthusiasts who couldn&apos;t find a local shop that shared our standards, so we built one. From day one in Montclair, our approach has been factory-level precision on every installation.
                 </p>
                 <p>
-                  Over the years, we expanded from automotive window tinting to a full-spectrum surface transformation studio — vehicle wraps, fleet graphics, residential and commercial window film, and architectural surface wraps. Each expansion came from clients asking us to bring our standard of work to new challenges. We always said yes.
+                  Over the years, we expanded from automotive wraps into a full-spectrum surface and design studio — vehicle wraps, luxury and exotic car wraps, food truck and fleet branding, UTV and side-by-side wraps, architectural surface films, and full brand identity design. Each expansion came from clients asking us to bring our standard of work to new challenges. We always said yes.
                 </p>
                 <p>
-                  Today, Prime Surface Studio serves clients across the Inland Empire — from Montclair and Ontario to Rancho Cucamonga, Pomona, Upland, and beyond. Our team of factory-trained installers uses only premium materials from brands like XPEL, 3M, Avery Dennison, SunTek, and Llumar, and we back every job with warranties that prove our confidence in the work.
+                  Today, Prime Surface Studio serves clients across the Inland Empire and Southern California — from Montclair and Ontario to Rancho Cucamonga, Newport Beach, Lake Havasu, and beyond. Our team of factory-trained installers and in-house designers uses only premium materials from XPEL, 3M, Avery Dennison, KPMF, and Inozetek, and we back every job with warranties that prove our confidence in the work.
                 </p>
               </div>
               <div className="mt-8">
@@ -166,10 +166,10 @@ export default function AboutPage() {
               <div className="space-y-4">
                 {[
                   "Factory-trained, certified installers — not weekend warriors",
-                  "Only premium film brands — XPEL, 3M, Avery Dennison, SunTek, Llumar, KPMF",
+                  "Only premium film brands — XPEL, 3M, Avery Dennison, KPMF, Inozetek",
                   "Climate-controlled installation suite — no dust, no bubbles",
                   "Meticulous prep work — clean paint is the foundation of every great wrap",
-                  "Lifetime warranty on ceramic tint, 2–5 year warranty on wraps",
+                  "Design + install under one roof — no agency hand-offs",
                   "Transparent, itemized quotes — no surprise charges",
                   "Over 87 five-star Google reviews from verified Inland Empire clients",
                 ].map((point) => (
@@ -186,7 +186,7 @@ export default function AboutPage() {
               <div className="relative aspect-video rounded-2xl overflow-hidden">
                 <Image
                   src="/images/about/why-us.jpg"
-                  alt="Precision window tint installation at Prime Surface Studio Montclair"
+                  alt="Precision vinyl wrap installation at Prime Surface Studio Montclair"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"

@@ -1,7 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const RECIPIENT = "info@primesurfacestudio.com";
+// Where form submissions get delivered. Set CONTACT_RECIPIENT_EMAIL in .env.local
+// (or in Vercel env vars in production) to your Gmail or any inbox you check.
+const RECIPIENT = process.env.CONTACT_RECIPIENT_EMAIL ?? "primesurfacestudio@gmail.com";
+// Sender shown in the "From" field. Use the resend.dev default until you've
+// verified your own domain in Resend; then switch to noreply@yourdomain.com.
+const SENDER = process.env.CONTACT_SENDER_EMAIL ?? "Prime Surface Studio <onboarding@resend.dev>";
 
 // Simple in-memory rate limit (resets on cold start)
 const rateMap = new Map<string, number[]>();
@@ -71,7 +76,7 @@ ${details.sqft ? `<p><strong>Square Footage:</strong> ${details.sqft}</p>` : ""}
           Authorization: `Bearer ${RESEND_API_KEY}`,
         },
         body: JSON.stringify({
-          from: "Prime Surface Studio Website <noreply@primesurfacestudio.com>",
+          from: SENDER,
           to: [RECIPIENT],
           reply_to: email,
           subject,

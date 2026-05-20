@@ -9,9 +9,9 @@ import { generatePageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = generatePageMetadata({
-  title: "Get a Free Quote | Car Wraps & Window Tinting Montclair CA",
+  title: "Get a Free Quote | Car Wraps, UTV Wraps & Brand Design Montclair CA",
   description:
-    "Get a free, no-obligation quote for window tinting or car wraps in Montclair, CA. Takes 2 minutes. Prime Surface Studio — (562) 733-9672.",
+    "Get a free, no-obligation quote for vehicle wraps, UTV / side-by-side wraps, or brand design in Montclair, CA. Takes 2 minutes. Prime Surface Studio — (562) 733-9672.",
   path: "/quote",
 });
 
@@ -19,7 +19,7 @@ const guarantees = [
   "Free consultation — no obligation",
   "Quote within 1 business day",
   "No hidden charges",
-  "Lifetime warranty on ceramic tint",
+  "Multi-year wrap installation warranties",
 ];
 
 export default function QuotePage() {
@@ -69,7 +69,7 @@ export default function QuotePage() {
                 <div className="mt-6 bg-[#111] rounded-xl border border-white/10 p-5">
                   <p className="text-white/40 text-xs uppercase tracking-wide mb-2">Trusted Brands</p>
                   <div className="flex flex-wrap gap-2">
-                    {["XPEL", "3M", "Avery Dennison", "SunTek", "Llumar"].map((b) => (
+                    {["XPEL", "3M", "Avery Dennison", "KPMF", "Inozetek", "Hexis"].map((b) => (
                       <span key={b} className="text-xs px-3 py-1 rounded-full border border-white/10 text-white/50">
                         {b}
                       </span>

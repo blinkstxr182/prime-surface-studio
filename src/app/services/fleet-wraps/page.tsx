@@ -49,9 +49,9 @@ export default function FleetWrapsPage() {
           </>
         }
         galleryImages={[
-          { src: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80", alt: "Commercial fleet wrap van branding Inland Empire" },
-          { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", alt: "Business vehicle wrap Rancho Cucamonga" },
-          { src: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800&q=80", alt: "Fleet graphics commercial truck wrap Ontario CA" },
+          { src: "/images/services/fleet-wraps/gallery-1.jpg", alt: "Commercial fleet wrap van branding Inland Empire" },
+          { src: "/images/services/fleet-wraps/gallery-2.webp", alt: "Business vehicle wrap Rancho Cucamonga" },
+          { src: "/images/services/fleet-wraps/gallery-3.webp", alt: "Fleet graphics commercial truck wrap Ontario CA" },
         ]}
       />
     </>

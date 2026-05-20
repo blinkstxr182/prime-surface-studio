@@ -1,10 +1,10 @@
-﻿"use client";
+"use client";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { CheckCircle, ArrowRight, ArrowLeft, Loader2, Car, Home, Layers, Truck, Package, Layout } from "lucide-react";
+import { CheckCircle, ArrowRight, ArrowLeft, Loader2, Layers, Sparkles, Truck, Package, Compass, Layout, Palette } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -14,17 +14,29 @@ import { fireGoogleAdsConversion } from "@/lib/analytics";
 
 const schema = z.object({
   serviceType: z.string().min(1, "Please select a service"),
-  // Auto fields
+  // Vehicle fields (car-wrap, luxury-car-wrap)
   year: z.string().optional(),
   make: z.string().optional(),
   model: z.string().optional(),
-  windows: z.string().optional(),
-  // Wrap fields
   wrapType: z.string().optional(),
   wrapFinish: z.string().optional(),
-  // Residential fields
+  ppfIncluded: z.string().optional(),
+  // Food truck / fleet fields
+  businessName: z.string().optional(),
+  vehicleCount: z.string().optional(),
+  // UTV fields
+  utvMake: z.string().optional(),
+  utvModel: z.string().optional(),
+  utvYear: z.string().optional(),
+  utvCoverage: z.string().optional(),
+  ppfNeeded: z.string().optional(),
+  // Architectural fields
   sqft: z.string().optional(),
-  numWindows: z.string().optional(),
+  surfaceType: z.string().optional(),
+  // Branding & graphic design fields
+  projectType: z.string().optional(),
+  hasBrandAssets: z.string().optional(),
+  deadline: z.string().optional(),
   // Contact
   name: z.string().min(2, "Name required"),
   email: z.string().email("Valid email required"),
@@ -37,12 +49,13 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const serviceTypes = [
-  { id: "auto-tint", label: "Auto Window Tinting", icon: Car },
-  { id: "home-tint", label: "Home Tinting", icon: Home },
   { id: "car-wrap", label: "Car Wrap", icon: Layers },
-  { id: "fleet", label: "Fleet Wraps", icon: Package },
-  { id: "food-truck", label: "Food Truck Wrap", icon: Truck },
-  { id: "architectural", label: "Architectural Wrap", icon: Layout },
+  { id: "luxury-car-wrap", label: "Luxury Car Wrap", icon: Sparkles },
+  { id: "food-truck-wrap", label: "Food Truck Wrap", icon: Truck },
+  { id: "fleet-wrap", label: "Fleet Wraps", icon: Package },
+  { id: "utv-wrap", label: "UTV Wrap", icon: Compass },
+  { id: "architectural-wrap", label: "Architectural Wrap", icon: Layout },
+  { id: "branding-design", label: "Branding & Graphic Design", icon: Palette },
 ];
 
 const steps = ["Service Type", "Project Details", "Contact Info", "Review"];
@@ -63,9 +76,13 @@ export function QuoteForm() {
   } = useForm<FormData>({ resolver: zodResolver(schema), defaultValues: { honeypot: "" } });
 
   const serviceType = watch("serviceType");
-  const isAuto = serviceType === "auto-tint";
-  const isWrap = ["car-wrap", "fleet", "food-truck"].includes(serviceType ?? "");
-  const isHome = ["home-tint", "architectural"].includes(serviceType ?? "");
+  const isCarWrap = serviceType === "car-wrap";
+  const isLuxury = serviceType === "luxury-car-wrap";
+  const isFoodTruck = serviceType === "food-truck-wrap";
+  const isFleet = serviceType === "fleet-wrap";
+  const isUTV = serviceType === "utv-wrap";
+  const isArchitectural = serviceType === "architectural-wrap";
+  const isDesign = serviceType === "branding-design";
 
   const nextStep = () => setStep((s) => Math.min(s + 1, 3));
   const prevStep = () => setStep((s) => Math.max(s - 1, 0));
@@ -152,7 +169,7 @@ export function QuoteForm() {
                     type="button"
                     onClick={() => setValue("serviceType", id)}
                     className={cn(
-                      "flex flex-col items-center gap-3 p-5 rounded-lg border-2 transition-all duration-200 text-sm font-medium",
+                      "flex flex-col items-center gap-3 p-5 rounded-lg border-2 transition-all duration-200 text-sm font-medium text-center",
                       serviceType === id
                         ? "border-[#C6F73C] bg-[#C6F73C]/10 text-white"
                         : "border-white/10 bg-white/5 text-white/60 hover:border-white/30 hover:text-white"
@@ -178,41 +195,120 @@ export function QuoteForm() {
               <h2 className="text-2xl font-black text-white mb-2">Project Details</h2>
               <p className="text-white/50 mb-6">Help us understand your project</p>
               <div className="space-y-4">
-                {isAuto && (
+                {/* Car wrap / Luxury car wrap */}
+                {(isCarWrap || isLuxury) && (
                   <>
                     <div className="grid sm:grid-cols-3 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="year">Vehicle Year</Label>
-                        <Input id="year" placeholder="2022" {...register("year")} />
+                        <Input id="year" placeholder="2024" {...register("year")} />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="make">Make</Label>
-                        <Input id="make" placeholder="Tesla" {...register("make")} />
+                        <Input id="make" placeholder={isLuxury ? "Porsche" : "Tesla"} {...register("make")} />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="model">Model</Label>
-                        <Input id="model" placeholder="Model 3" {...register("model")} />
+                        <Input id="model" placeholder={isLuxury ? "911 Turbo" : "Model 3"} {...register("model")} />
                       </div>
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="windows">Windows to Tint</Label>
-                      <Input id="windows" placeholder="All windows / Front 2 / Windshield only" {...register("windows")} />
-                    </div>
-                  </>
-                )}
-                {isWrap && (
-                  <>
                     <div className="space-y-2">
                       <Label htmlFor="wrapType">Full or Partial Wrap?</Label>
                       <Input id="wrapType" placeholder="Full wrap / Partial (hood, roof) / Accents only" {...register("wrapType")} />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="wrapFinish">Preferred Finish</Label>
-                      <Input id="wrapFinish" placeholder="Matte black / Gloss red / Satin / Open to suggestions" {...register("wrapFinish")} />
+                      <Input id="wrapFinish" placeholder={isLuxury ? "XPEL Stealth satin / 3M 2080 matte black / Inozetek color-shift" : "Matte black / Gloss red / Satin / Open to suggestions"} {...register("wrapFinish")} />
+                    </div>
+                    {isLuxury && (
+                      <div className="space-y-2">
+                        <Label htmlFor="ppfIncluded">Paint Protection Film (PPF) included?</Label>
+                        <Input id="ppfIncluded" placeholder="Yes — full front / Partial PPF / Not sure" {...register("ppfIncluded")} />
+                      </div>
+                    )}
+                  </>
+                )}
+
+                {/* Food truck wrap */}
+                {isFoodTruck && (
+                  <>
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="businessName">Business Name</Label>
+                        <Input id="businessName" placeholder="Your truck or business name" {...register("businessName")} />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="wrapType">Full or Partial Wrap?</Label>
+                        <Input id="wrapType" placeholder="Full wrap / Partial / Spot graphics" {...register("wrapType")} />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="hasBrandAssets">Do you have existing brand assets (logo, colors)?</Label>
+                      <Input id="hasBrandAssets" placeholder="Yes — have logo & guidelines / Logo only / Need design from scratch" {...register("hasBrandAssets")} />
                     </div>
                   </>
                 )}
-                {isHome && (
+
+                {/* Fleet wrap */}
+                {isFleet && (
+                  <>
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="businessName">Company Name</Label>
+                        <Input id="businessName" placeholder="Your company name" {...register("businessName")} />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="vehicleCount">Number of Vehicles</Label>
+                        <Input id="vehicleCount" placeholder="5" {...register("vehicleCount")} />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="wrapType">Vehicle Types &amp; Coverage</Label>
+                      <Input id="wrapType" placeholder="3 Sprinter vans full wrap, 2 pickups spot graphics" {...register("wrapType")} />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="hasBrandAssets">Existing brand assets?</Label>
+                      <Input id="hasBrandAssets" placeholder="Yes / Logo only / Need design from scratch" {...register("hasBrandAssets")} />
+                    </div>
+                  </>
+                )}
+
+                {/* UTV wrap */}
+                {isUTV && (
+                  <>
+                    <div className="grid sm:grid-cols-3 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="utvYear">Year</Label>
+                        <Input id="utvYear" placeholder="2024" {...register("utvYear")} />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="utvMake">Make</Label>
+                        <Input id="utvMake" placeholder="Polaris / Can-Am / Yamaha / Honda / Kawasaki" {...register("utvMake")} />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="utvModel">Model</Label>
+                        <Input id="utvModel" placeholder="RZR Pro R / Maverick X3 / YXZ1000R / Talon" {...register("utvModel")} />
+                      </div>
+                    </div>
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="utvCoverage">Wrap Coverage</Label>
+                        <Input id="utvCoverage" placeholder="Full body / Partial / Accents / Race livery" {...register("utvCoverage")} />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="ppfNeeded">PPF on front-end?</Label>
+                        <Input id="ppfNeeded" placeholder="Yes / Maybe / Not sure" {...register("ppfNeeded")} />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="wrapFinish">Preferred Look / Livery Ideas</Label>
+                      <Input id="wrapFinish" placeholder="Desert camo, sponsor mockup, factory race team replica, custom artwork..." {...register("wrapFinish")} />
+                    </div>
+                  </>
+                )}
+
+                {/* Architectural wrap */}
+                {isArchitectural && (
                   <>
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div className="space-y-2">
@@ -220,12 +316,31 @@ export function QuoteForm() {
                         <Input id="sqft" placeholder="500 sq ft" {...register("sqft")} />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="numWindows">Number of Windows/Surfaces</Label>
-                        <Input id="numWindows" placeholder="10 windows" {...register("numWindows")} />
+                        <Label htmlFor="surfaceType">Surface Type</Label>
+                        <Input id="surfaceType" placeholder="Walls / Elevator / Reception desk / Cabinetry" {...register("surfaceType")} />
                       </div>
                     </div>
                   </>
                 )}
+
+                {/* Branding & graphic design */}
+                {isDesign && (
+                  <>
+                    <div className="space-y-2">
+                      <Label htmlFor="projectType">Project Type</Label>
+                      <Input id="projectType" placeholder="Logo / Full brand identity / Vehicle wrap design / Signage / Print / Other" {...register("projectType")} />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="hasBrandAssets">Existing brand assets?</Label>
+                      <Input id="hasBrandAssets" placeholder="Yes — have logo, colors, guidelines / Some / Starting from scratch" {...register("hasBrandAssets")} />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="deadline">Deadline</Label>
+                      <Input id="deadline" placeholder="Flexible / Within 4 weeks / Specific event date" {...register("deadline")} />
+                    </div>
+                  </>
+                )}
+
                 <div className="space-y-2">
                   <Label htmlFor="notes">Additional Details</Label>
                   <Textarea id="notes" placeholder="Any other details, special requirements, or questions..." {...register("notes")} />

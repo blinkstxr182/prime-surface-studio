@@ -5,12 +5,13 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 
 const serviceLinks = [
-  { title: "Automotive Window Tinting", href: "/services/car-window-tinting" },
-  { title: "Residential & Commercial Tinting", href: "/services/residential-commercial-window-tinting" },
   { title: "Car Wraps", href: "/services/car-wraps" },
+  { title: "Luxury Car Wraps", href: "/services/luxury-car-wraps" },
   { title: "Food Truck Wraps", href: "/services/food-truck-wraps" },
   { title: "Fleet Wraps", href: "/services/fleet-wraps" },
+  { title: "UTV Wraps", href: "/services/utv-wraps" },
   { title: "Architectural Wraps", href: "/services/architectural-wraps" },
+  { title: "Branding & Graphic Design", href: "/services/branding-graphic-design" },
 ];
 
 const companyLinks = [
@@ -34,7 +35,7 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-white/50 text-sm leading-relaxed mb-5">
-              Montclair&apos;s premier window tinting and vehicle wrap specialists. Precision installations, premium materials, and results that last.
+              Premium vehicle wraps, UTV wraps, and brand design in Montclair, CA. Licensed, insured, and obsessed with the details.
             </p>
             <div className="flex items-center gap-3">
               <SocialLink href={siteConfig.social.instagram} label="Instagram">

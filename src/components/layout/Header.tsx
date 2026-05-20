@@ -9,12 +9,13 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const services = [
-  { title: "Automotive Window Tinting", href: "/services/car-window-tinting" },
-  { title: "Residential & Commercial Tinting", href: "/services/residential-commercial-window-tinting" },
   { title: "Car Wraps", href: "/services/car-wraps" },
+  { title: "Luxury Car Wraps", href: "/services/luxury-car-wraps" },
   { title: "Food Truck Wraps", href: "/services/food-truck-wraps" },
   { title: "Fleet Wraps", href: "/services/fleet-wraps" },
+  { title: "UTV Wraps", href: "/services/utv-wraps" },
   { title: "Architectural Wraps", href: "/services/architectural-wraps" },
+  { title: "Branding & Graphic Design", href: "/services/branding-graphic-design" },
 ];
 
 export function Header() {
@@ -103,7 +104,7 @@ export function Header() {
             <div className="relative h-10 lg:h-12 w-[150px] lg:w-[180px]">
               <Image
                 src="/logo.png"
-                alt="Prime Surface Studio — Premium window tinting and vehicle wraps in Montclair CA"
+                alt="Prime Surface Studio — Premium vehicle wraps, UTV wraps and brand design in Montclair CA"
                 fill
                 sizes="180px"
                 className="object-contain object-left"

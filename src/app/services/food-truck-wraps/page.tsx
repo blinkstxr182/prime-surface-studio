@@ -49,9 +49,9 @@ export default function FoodTruckWrapsPage() {
           </>
         }
         galleryImages={[
-          { src: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80", alt: "Custom food truck wrap full color Inland Empire" },
-          { src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80", alt: "Food truck branding wrap Los Angeles" },
-          { src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80", alt: "Mobile food truck exterior wrap graphics" },
+          { src: "/images/services/food-truck-wraps/gallery-1.jpg", alt: "Custom food truck wrap full color graphics Inland Empire" },
+          { src: "/images/services/food-truck-wraps/gallery-2.jpg", alt: "Food truck branding wrap Los Angeles" },
+          { src: "/images/services/food-truck-wraps/gallery-3.jpg", alt: "Mobile food truck exterior wrap graphics Montclair CA" },
         ]}
       />
     </>

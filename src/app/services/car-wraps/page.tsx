@@ -1,5 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ServicePageTemplate } from "@/components/sections/ServicePageTemplate";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
@@ -31,6 +32,13 @@ export default function CarWrapsPage() {
         serviceId="car-wraps"
         introCopy={
           <>
+            <p className="text-[#C6F73C]/90 border-l-2 border-[#C6F73C] pl-4 italic">
+              Driving a Lamborghini, Ferrari, Porsche, McLaren, or other exotic? See our{" "}
+              <Link href="/services/luxury-car-wraps" className="underline hover:text-[#C6F73C]">
+                Luxury Car Wraps
+              </Link>{" "}
+              service for concierge-level installations.
+            </p>
             <p>
               A vinyl car wrap is the smartest way to transform your vehicle in the Inland Empire without committing to a paint job. Whether you want a complete color change — from factory white to matte black, or gloss red to satin gunmetal — or you&apos;re looking to protect your paint with a clear bra, Prime Surface Studio delivers wrap results that rival factory finishes. Our Montclair shop has wrapped everything from daily drivers to supercars, and our work speaks for itself.
             </p>
@@ -49,9 +57,9 @@ export default function CarWrapsPage() {
           </>
         }
         galleryImages={[
-          { src: "https://images.unsplash.com/photo-1614026480209-cd9934144671?w=800&q=80", alt: "Custom vinyl car wrap color change Montclair CA" },
-          { src: "https://images.unsplash.com/photo-1626668893632-6f3a4466d22f?w=800&q=80", alt: "Matte black full car wrap Inland Empire" },
-          { src: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=800&q=80", alt: "Paint protection film PPF clear bra installation" },
+          { src: "/images/services/car-wraps/gallery-1.jpg", alt: "Custom vinyl car wrap color change Montclair CA — Prime Surface Studio" },
+          { src: "/images/services/car-wraps/gallery-2.jpg", alt: "Matte black full car wrap project Inland Empire" },
+          { src: "/images/services/car-wraps/gallery-3.jpg", alt: "Paint protection film PPF installation Montclair CA" },
         ]}
       />
     </>

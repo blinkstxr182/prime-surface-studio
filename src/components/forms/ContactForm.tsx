@@ -23,13 +23,13 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const serviceOptions = [
-  "Automotive Window Tinting",
-  "Residential Window Tinting",
-  "Commercial Window Tinting",
   "Car Wrap",
+  "Luxury Car Wrap",
   "Food Truck Wrap",
   "Fleet Wraps",
+  "UTV Wrap",
   "Architectural Wraps",
+  "Branding & Graphic Design",
   "Other",
 ];
 
