@@ -3,8 +3,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { HomeHero } from "@/components/sections/HomeHero";
+import { HeroShowcase } from "@/components/sections/HeroShowcase";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { TrustStrip } from "@/components/sections/TrustStrip";
+import { InsideStudio } from "@/components/sections/InsideStudio";
+import { FeaturedWork } from "@/components/sections/FeaturedWork";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { CTABanner } from "@/components/sections/CTABanner";
@@ -67,87 +70,74 @@ export default function HomePage() {
       <JsonLd data={faqSchema(homeFaqs)} />
 
       <HomeHero />
+      <HeroShowcase />
       <TrustStrip />
       <ServicesGrid />
+      <InsideStudio />
+      <FeaturedWork />
 
-      {/* Why Choose Us */}
-      <section className="py-24 bg-[#111] border-y border-white/5">
+      {/* Why Choose Us — flat 4-up, EVW style */}
+      <section className="py-24 lg:py-32 bg-white border-b border-black/5">
         <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16">
-          <FadeUp className="text-center mb-16">
-            <p className="text-[#C6F73C] text-sm font-semibold tracking-[0.2em] uppercase mb-3">Why Choose Us</p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white">The Prime Surface Difference</h2>
-          </FadeUp>
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="max-w-3xl mx-auto text-center mb-16 lg:mb-20">
+            <p className="text-black/40 text-xs font-semibold tracking-[0.2em] uppercase mb-4">Why Choose Us</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0A0A0A] leading-tight">The Prime Surface Difference</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 max-w-6xl mx-auto">
             {whyUs.map((item) => (
-              <StaggerItem key={item.title}>
-                <div className="group relative text-center p-6 rounded-xl border border-white/10 bg-[#0A0A0A] h-full transition-all duration-500 hover:border-[#C6F73C]/40 hover:-translate-y-2 hover:bg-[#0d0d0d] cursor-default overflow-hidden">
-                  {/* Subtle glow on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#C6F73C]/0 via-transparent to-[#C6F73C]/0 group-hover:from-[#C6F73C]/5 group-hover:to-[#C6F73C]/10 transition-all duration-700 pointer-events-none" />
-                  <div className="relative">
-                    <div className="text-4xl mb-4 inline-block transition-transform duration-500 group-hover:scale-110 group-hover:rotate-[-8deg]">{item.icon}</div>
-                    <h3 className="text-lg font-bold text-white mb-3 transition-colors group-hover:text-[#C6F73C]">{item.title}</h3>
-                    <p className="text-white/50 text-sm leading-relaxed">{item.description}</p>
-                  </div>
+              <FadeUp key={item.title} className="text-center">
+                <div className="w-14 h-14 mx-auto mb-5 rounded-full bg-[#C6F73C] flex items-center justify-center text-2xl">
+                  {item.icon}
                 </div>
-              </StaggerItem>
+                <h3 className="text-base font-bold text-[#0A0A0A] mb-3 uppercase tracking-wide">{item.title}</h3>
+                <p className="text-black/60 text-sm leading-relaxed" style={{ textTransform: "none" }}>{item.description}</p>
+              </FadeUp>
             ))}
-          </StaggerContainer>
+          </div>
         </div>
       </section>
 
-      {/* Process */}
-      <section className="py-24 bg-[#0A0A0A]">
+      {/* Process — minimal numbered steps */}
+      <section className="py-24 lg:py-32 bg-[#FAFAFA] border-b border-black/5">
         <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16">
-          <FadeUp className="text-center mb-16">
-            <p className="text-[#C6F73C] text-sm font-semibold tracking-[0.2em] uppercase mb-3">How It Works</p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white">Our Installation Process</h2>
-          </FadeUp>
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4 relative">
-            {/* Connecting line */}
-            <div className="hidden lg:block absolute top-12 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-[#C6F73C]/30 to-transparent" aria-hidden="true" />
+          <div className="max-w-3xl mx-auto text-center mb-16 lg:mb-20">
+            <p className="text-black/40 text-xs font-semibold tracking-[0.2em] uppercase mb-4">How It Works</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0A0A0A] leading-tight">Our Process</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 max-w-6xl mx-auto">
             {processSteps.map((item) => (
-              <StaggerItem key={item.step}>
-                <div className="group relative p-6 rounded-xl border border-white/10 bg-[#111] h-full transition-all duration-500 hover:border-[#C6F73C]/40 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(198,247,60,0.1)] cursor-default">
-                  <div className="text-5xl font-black text-[#C6F73C]/20 mb-4 leading-none transition-all duration-500 group-hover:text-[#C6F73C]/60 group-hover:scale-110 inline-block">{item.step}</div>
-                  <h3 className="text-lg font-bold text-white mb-3">{item.title}</h3>
-                  <p className="text-white/50 text-sm leading-relaxed">{item.description}</p>
-                </div>
-              </StaggerItem>
+              <FadeUp key={item.step}>
+                <div className="text-6xl font-bold text-[#C6F73C] mb-3 leading-none font-display">{item.step}</div>
+                <h3 className="text-base font-bold text-[#0A0A0A] mb-3 uppercase tracking-wide">{item.title}</h3>
+                <p className="text-black/60 text-sm leading-relaxed" style={{ textTransform: "none" }}>{item.description}</p>
+              </FadeUp>
             ))}
-          </StaggerContainer>
+          </div>
         </div>
       </section>
 
-      {/* Gallery */}
-      <section className="py-24 bg-[#111] border-y border-white/5">
+      {/* Gallery — clean grid, no hover overlays */}
+      <section className="py-24 lg:py-32 bg-white border-b border-black/5">
         <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16">
-          <FadeUp className="text-center mb-16">
-            <p className="text-[#C6F73C] text-sm font-semibold tracking-[0.2em] uppercase mb-3">Our Work</p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white">Recent Projects</h2>
-            <p className="text-white/50 text-lg mt-4 max-w-2xl mx-auto">
-              Every project is a portfolio piece. These are a few recent installations from our Montclair shop.
+          <div className="max-w-3xl mx-auto text-center mb-16 lg:mb-20">
+            <p className="text-black/40 text-xs font-semibold tracking-[0.2em] uppercase mb-4">Our Work</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0A0A0A] mb-6 leading-tight">Recent Projects</h2>
+            <p className="text-black/60 text-base sm:text-lg" style={{ textTransform: "none" }}>
+              Every project is a portfolio piece. A few recent installations from our Montclair shop.
             </p>
-          </FadeUp>
+          </div>
           <StaggerContainer className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {galleryImages.map((img, i) => (
               <StaggerItem key={i}>
-                <div className="relative aspect-square rounded-lg overflow-hidden group cursor-pointer">
+                <div className="relative aspect-square overflow-hidden group bg-[#F5F5F5]">
                   <Image
                     src={img.src}
                     alt={img.alt}
                     fill
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
                     loading="lazy"
                   />
-                  {/* Dark overlay sliding up from bottom */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
-                  {/* Caption that fades up */}
-                  <div className="absolute inset-x-0 bottom-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
-                    <p className="text-white text-xs sm:text-sm font-medium leading-snug">{img.alt}</p>
-                  </div>
-                  {/* Lime accent border on hover */}
-                  <div className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-[#C6F73C]/40 transition-colors duration-300 pointer-events-none" />
                 </div>
               </StaggerItem>
             ))}

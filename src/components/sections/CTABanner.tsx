@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -19,20 +19,21 @@ export function CTABanner({
   primaryHref = "/quote",
 }: CTABannerProps) {
   return (
-    <section className="relative overflow-hidden bg-[#0A0A0A] py-20 border-y border-white/5">
-      {/* Background glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(198,247,60,0.08)_0%,transparent_60%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(198,247,60,0.03)_0%,transparent_50%,rgba(198,247,60,0.03)_100%)]" />
-
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 text-center">
+    <section className="bg-white py-24 border-y border-black/5">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 text-center">
         <FadeUp>
-          <p className="text-[#C6F73C] text-sm font-semibold tracking-[0.2em] uppercase mb-4">
-            Free Consultation & Quote
+          <p className="text-black/40 text-xs font-semibold tracking-[0.2em] uppercase mb-4">
+            Free Consultation &amp; Quote
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0A0A0A] mb-5 leading-tight">
             {headline}
           </h2>
-          <p className="text-white/60 text-lg mb-8 max-w-2xl mx-auto">{subtext}</p>
+          <p
+            className="text-black/60 text-lg mb-10 max-w-2xl mx-auto"
+            style={{ textTransform: "none" }}
+          >
+            {subtext}
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href={primaryHref}>
               <Button variant="primary" size="lg">

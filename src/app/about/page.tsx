@@ -59,34 +59,40 @@ export default function AboutPage() {
         ])}
       />
 
-      {/* Hero */}
-      <section className="relative py-28 overflow-hidden bg-[#0A0A0A]">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/about/hero.jpg"
-            alt="Prime Surface Studio professional installers at work in Montclair CA"
-            fill
-            className="object-cover opacity-20"
-            priority
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/60 to-[#0A0A0A]" />
-        </div>
-        <div className="relative w-full px-4 sm:px-6 lg:px-10 xl:px-16 text-center">
+      {/* Hero — light, text-driven (matches homepage) */}
+      <section className="bg-white pt-24 pb-20 lg:pt-32 lg:pb-24 border-b border-black/5">
+        <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16 text-center">
           <FadeUp>
-            <p className="text-[#C6F73C] text-sm font-semibold tracking-[0.2em] uppercase mb-4">About Us</p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6">
-              Built on Precision.<br />Driven by Passion.
+            <p className="text-black/40 text-xs font-semibold tracking-[0.2em] uppercase mb-4">About Us</p>
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl font-bold text-[#0A0A0A] mb-6 leading-[0.95] tracking-tight">
+              Built on Precision.<br />
+              <span className="text-[#C6F73C]">Driven by Passion.</span>
             </h1>
-            <p className="text-white/60 text-xl max-w-2xl mx-auto">
+            <p className="text-black/60 text-lg sm:text-xl max-w-2xl mx-auto" style={{ textTransform: "none" }}>
               Montclair&apos;s locally owned vehicle wrap, UTV wrap, and brand design studio — where craftsmanship meets obsession.
             </p>
           </FadeUp>
         </div>
       </section>
 
+      {/* Hero photo strip — full-bleed below the text */}
+      <section className="bg-white border-b border-black/5">
+        <FadeUp>
+          <div className="relative w-full aspect-[21/9] sm:aspect-[16/6] overflow-hidden">
+            <Image
+              src="/images/about/hero.jpg"
+              alt="Prime Surface Studio professional installers at work in Montclair CA"
+              fill
+              className="object-cover object-center"
+              priority
+              sizes="100vw"
+            />
+          </div>
+        </FadeUp>
+      </section>
+
       {/* Story */}
-      <section className="py-24 bg-[#0A0A0A]">
+      <section className="py-24 bg-white">
         <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <FadeUp>
@@ -103,10 +109,10 @@ export default function AboutPage() {
             </FadeUp>
             <FadeUp delay={0.2}>
               <p className="text-[#C6F73C] text-sm font-semibold tracking-[0.2em] uppercase mb-4">Our Story</p>
-              <h2 className="text-3xl sm:text-4xl font-black text-white mb-6">
+              <h2 className="text-3xl sm:text-4xl font-black text-[#0A0A0A] mb-6">
                 Montclair-Born. Inland Empire Proud.
               </h2>
-              <div className="space-y-4 text-white/60 leading-relaxed">
+              <div className="space-y-4 text-black/60 leading-relaxed">
                 <p>
                   Prime Surface Studio was founded with a single obsession: doing the work right. Not fast, not cheap — right. We started as automotive enthusiasts who couldn&apos;t find a local shop that shared our standards, so we built one. From day one in Montclair, our approach has been factory-level precision on every installation.
                 </p>
@@ -132,21 +138,21 @@ export default function AboutPage() {
       <StatsCounter />
 
       {/* Values */}
-      <section className="py-24 bg-[#111] border-y border-white/5">
+      <section className="py-24 bg-[#F5F5F5] border-y border-black/5">
         <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16">
           <FadeUp className="text-center mb-16">
             <p className="text-[#C6F73C] text-sm font-semibold tracking-[0.2em] uppercase mb-3">What Drives Us</p>
-            <h2 className="text-3xl sm:text-4xl font-black text-white">Mission, Vision &amp; Values</h2>
+            <h2 className="text-3xl sm:text-4xl font-black text-[#0A0A0A]">Mission, Vision &amp; Values</h2>
           </FadeUp>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {values.map((v) => (
               <StaggerItem key={v.title}>
-                <div className="p-8 rounded-xl border border-white/10 bg-[#0A0A0A] h-full text-center">
+                <div className="p-8 rounded-xl border border-black/10 bg-white h-full text-center">
                   <div className="w-14 h-14 rounded-full bg-[#C6F73C]/10 border border-[#C6F73C]/30 flex items-center justify-center mx-auto mb-5">
                     <v.icon className="w-7 h-7 text-[#C6F73C]" />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-4">{v.title}</h3>
-                  <p className="text-white/50 text-sm leading-relaxed">{v.description}</p>
+                  <h3 className="text-xl font-bold text-[#0A0A0A] mb-4">{v.title}</h3>
+                  <p className="text-black/55 text-sm leading-relaxed">{v.description}</p>
                 </div>
               </StaggerItem>
             ))}
@@ -155,12 +161,12 @@ export default function AboutPage() {
       </section>
 
       {/* Why Us */}
-      <section className="py-24 bg-[#0A0A0A]">
+      <section className="py-24 bg-white">
         <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <FadeUp>
               <p className="text-[#C6F73C] text-sm font-semibold tracking-[0.2em] uppercase mb-4">Why Choose Us</p>
-              <h2 className="text-3xl sm:text-4xl font-black text-white mb-6">
+              <h2 className="text-3xl sm:text-4xl font-black text-[#0A0A0A] mb-6">
                 Standards Most Shops Don&apos;t Have
               </h2>
               <div className="space-y-4">
@@ -177,7 +183,7 @@ export default function AboutPage() {
                     <div className="w-5 h-5 rounded-full bg-[#C6F73C]/20 border border-[#C6F73C]/40 flex items-center justify-center shrink-0 mt-0.5">
                       <div className="w-2 h-2 rounded-full bg-[#C6F73C]" />
                     </div>
-                    <p className="text-white/70 text-sm leading-relaxed">{point}</p>
+                    <p className="text-black/70 text-sm leading-relaxed">{point}</p>
                   </div>
                 ))}
               </div>
@@ -198,16 +204,16 @@ export default function AboutPage() {
       </section>
 
       {/* Certifications */}
-      <section className="py-20 bg-[#111] border-y border-white/5">
+      <section className="py-20 bg-[#F5F5F5] border-y border-black/5">
         <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16">
           <FadeUp className="text-center mb-12">
             <p className="text-[#C6F73C] text-sm font-semibold tracking-[0.2em] uppercase mb-3">Certifications &amp; Partners</p>
-            <h2 className="text-3xl font-black text-white">Industry-Certified. Brand-Trusted.</h2>
+            <h2 className="text-3xl font-black text-[#0A0A0A]">Industry-Certified. Brand-Trusted.</h2>
           </FadeUp>
           <StaggerContainer className="flex flex-wrap justify-center gap-4">
             {certifications.map((cert) => (
               <StaggerItem key={cert}>
-                <div className="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-white/60 text-sm font-medium flex items-center gap-2">
+                <div className="px-6 py-3 rounded-full border border-black/10 bg-black/[0.03] text-black/60 text-sm font-medium flex items-center gap-2">
                   <Award className="w-4 h-4 text-[#C6F73C]" />
                   {cert}
                 </div>

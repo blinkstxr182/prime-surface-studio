@@ -1,181 +1,149 @@
 "use client";
-import React, { useRef, useState, useEffect } from "react";
-import Image from "next/image";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
-import { ArrowRight, Phone, CheckCircle, Star, ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowRight, Phone, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { MagneticButton } from "@/components/ui/MagneticButton";
-import { AnimatedBackground } from "@/components/ui/AnimatedBackground";
-import { AnimatedHeading } from "@/components/ui/AnimatedText";
 import { siteConfig } from "@/lib/site-config";
 
 export function HomeHero() {
-  const ref = useRef<HTMLDivElement>(null);
-  const shouldReduce = useReducedMotion();
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Defer scroll-tied animations until after hydration so SSR and client agree
-  // on the initial markup. Until mounted, MotionValues are not bound to style.
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  // Always autoplay — the video is a decorative ambient background loop,
+  // not the kind of moving content the reduced-motion preference targets.
+  // Chrome aggressively pauses muted background videos under battery saver
+  // or strict autoplay policies, so we additionally listen for any user
+  // interaction and kick play() then. Cleanup runs once play succeeds.
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = true;
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
+    let started = false;
+    const tryPlay = () => {
+      if (started) return;
+      v.play()
+        .then(() => {
+          started = true;
+          removeListeners();
+        })
+        .catch(() => {});
+    };
 
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+    const removeListeners = () => {
+      ["pointerdown", "touchstart", "keydown", "scroll"].forEach((evt) =>
+        window.removeEventListener(evt, tryPlay)
+      );
+    };
 
-  const parallaxEnabled = mounted && !shouldReduce;
+    // Try immediately
+    tryPlay();
+    // Re-arm on any user interaction in case autoplay was blocked
+    ["pointerdown", "touchstart", "keydown", "scroll"].forEach((evt) =>
+      window.addEventListener(evt, tryPlay, { passive: true })
+    );
+
+    return removeListeners;
+  }, []);
 
   return (
-    <section
-      ref={ref}
-      className="relative min-h-[90vh] flex items-center justify-center overflow-hidden"
-    >
-      {/* Parallax background image */}
-      <motion.div
-        className="absolute inset-0"
-        style={parallaxEnabled ? { y: bgY } : undefined}
-      >
-        <Image
-          src="/images/hero-home.jpg"
-          alt="Premium vinyl car wrap installation by Prime Surface Studio in Montclair CA"
-          fill
-          className="object-cover object-center scale-110"
-          priority
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/80 via-[#0A0A0A]/60 to-[#0A0A0A]/90" />
-      </motion.div>
+    <section className="relative min-h-[85vh] lg:min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#0A0A0A]">
+      {/* Video background layer */}
+      <div className="absolute inset-0 w-full h-full">
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          poster="/images/hero-home.jpg"
+          className="absolute inset-0 w-full h-full object-cover"
+          aria-hidden="true"
+        >
+          <source src="/videos/hero.mp4" type="video/mp4" />
+          <source src="/videos/hero.webm" type="video/webm" />
+        </video>
+        {/* Dark gradient overlay so white text reads on top */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/70 via-[#0A0A0A]/55 to-[#0A0A0A]/85" />
+      </div>
 
-      {/* Animated lime blobs */}
-      <AnimatedBackground />
-
-      {/* Animated grid overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
-
-      {/* Content */}
-      <motion.div
-        className="relative w-full px-4 sm:px-6 lg:px-10 xl:px-16 py-20 text-center lg:text-left z-10"
-        style={parallaxEnabled ? { y: contentY, opacity } : undefined}
-      >
-        <div className="max-w-5xl">
-          {/* Floating badge */}
+      {/* Hero content */}
+      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-10 xl:px-16 py-20 lg:py-28">
+        <div className="max-w-5xl mx-auto text-center">
+          {/* Eyebrow badge */}
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C6F73C]/30 bg-[#C6F73C]/10 text-[#C6F73C] text-sm font-medium mb-6 backdrop-blur-sm"
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/10 text-white text-xs font-semibold tracking-[0.15em] uppercase mb-8 backdrop-blur-sm"
           >
-            <motion.span
-              animate={shouldReduce ? undefined : { rotate: [0, 360] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-              className="inline-flex"
-            >
-              <Star className="w-3.5 h-3.5 fill-current" />
-            </motion.span>
+            <Star className="w-3.5 h-3.5 fill-[#C6F73C] stroke-[#C6F73C]" />
             Montclair&apos;s #1 Rated Wrap &amp; Design Studio
           </motion.div>
 
-          {/* H1 — word-by-word reveal */}
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-black text-white leading-[0.95] mb-6 tracking-tight">
-            <AnimatedHeading text="Premium Vehicle Wraps," />
+          {/* Main headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+            className="font-display text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-bold text-white leading-[0.95] mb-8 tracking-tight"
+          >
+            Your ride should reflect
             <br />
-            <AnimatedHeading
-              text="UTV Wraps & Brand Design"
-              delay={0.3}
-              className="text-[#C6F73C]"
-            />
+            <span className="text-[#C6F73C]">your unique style,</span>
             <br />
-            <AnimatedHeading text="in Montclair, CA" delay={0.6} />
-          </h1>
+            not blend in.
+          </motion.h1>
 
+          {/* Subhead */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 1, ease: "easeOut" }}
-            className="text-white/70 text-lg sm:text-xl max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed"
+            transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
+            className="text-white/80 text-lg sm:text-xl max-w-3xl mx-auto mb-10 leading-relaxed"
+            style={{ textTransform: "none" }}
           >
-            Vehicle wraps, luxury & exotic car wraps, food truck graphics, fleet branding, UTV & side-by-side wraps, and full brand identity design — all under one roof using premium films from{" "}
-            <span className="text-white font-semibold">XPEL, 3M, Avery Dennison, and KPMF.</span>
+            Premium vehicle wraps, luxury &amp; exotic car wraps, UTV graphics, food truck branding,
+            fleet livery, and full brand identity design — all under one roof in Montclair, CA.
           </motion.p>
 
+          {/* CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 1.2, ease: "easeOut" }}
-            className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <MagneticButton>
-              <Link href="/quote">
-                <Button variant="primary" size="lg">
-                  Get a Free Quote{" "}
-                  <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-                </Button>
-              </Link>
-            </MagneticButton>
-            <MagneticButton>
-              <a href={`tel:${siteConfig.contact.phone}`}>
-                <Button variant="outline" size="lg">
-                  <Phone className="w-5 h-5" /> Call {siteConfig.contact.phoneDisplay}
-                </Button>
-              </a>
-            </MagneticButton>
+            <Link href="/quote">
+              <Button variant="primary" size="lg">
+                Get a Free Quote
+                <ArrowRight className="w-5 h-5" />
+              </Button>
+            </Link>
+            <a href={`tel:${siteConfig.contact.phone}`}>
+              <Button
+                variant="outline"
+                size="lg"
+                className="!border-white !text-white hover:!bg-white hover:!text-[#0A0A0A]"
+              >
+                <Phone className="w-5 h-5" />
+                Call {siteConfig.contact.phoneDisplay}
+              </Button>
+            </a>
           </motion.div>
 
-          <motion.div
+          {/* Trust micro-line */}
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1.5 }}
-            className="flex flex-wrap items-center gap-4 mt-8 justify-center lg:justify-start text-sm text-white/50"
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="mt-10 text-xs tracking-[0.15em] uppercase text-white/60 font-medium"
           >
-            {["Free Consultation", "Same-Day Appointments", "Lifetime Warranty"].map((item, i) => (
-              <motion.span
-                key={item}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 1.6 + i * 0.15 }}
-                className="flex items-center gap-2"
-              >
-                <CheckCircle className="w-4 h-4 text-[#C6F73C]" /> {item}
-              </motion.span>
-            ))}
-          </motion.div>
+            Licensed &amp; Insured · 1,000+ Vehicles Wrapped · XPEL · 3M · Avery · KPMF
+          </motion.p>
         </div>
-      </motion.div>
-
-      {/* Animated scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
-        aria-hidden="true"
-      >
-        <span className="text-white/40 text-xs tracking-[0.2em] uppercase">Scroll</span>
-        <motion.div
-          animate={shouldReduce ? undefined : { y: [0, 8, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-          className="w-6 h-10 border-2 border-white/20 rounded-full flex items-start justify-center p-1.5"
-        >
-          <motion.span
-            animate={shouldReduce ? undefined : { y: [0, 12, 0], opacity: [1, 0, 1] }}
-            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-            className="w-1 h-2 bg-[#C6F73C] rounded-full"
-          />
-        </motion.div>
-        <ChevronDown className="w-4 h-4 text-white/30" />
-      </motion.div>
+      </div>
     </section>
   );
 }

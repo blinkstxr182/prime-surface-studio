@@ -64,7 +64,7 @@ export function Header() {
   return (
     <>
       {/* Top utility bar */}
-      <div className="hidden lg:block bg-[#111] border-b border-white/5 text-white/60 text-xs">
+      <div className="hidden lg:block bg-[#F5F5F5] border-b border-black/5 text-black/60 text-xs">
         <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16 flex items-center justify-between h-9">
           <div className="flex items-center gap-5">
             <a href={`tel:${siteConfig.contact.phone}`} className="flex items-center gap-1.5 hover:text-[#C6F73C] transition-colors">
@@ -94,8 +94,8 @@ export function Header() {
         className={cn(
           "sticky top-0 z-50 w-full transition-all duration-300",
           scrolled
-            ? "bg-[#0A0A0A]/90 backdrop-blur-xl border-b border-white/10 shadow-2xl"
-            : "bg-[#0A0A0A]/80 backdrop-blur-md border-b border-white/5"
+            ? "bg-white/90 backdrop-blur-xl border-b border-black/10 shadow-2xl"
+            : "bg-white/80 backdrop-blur-md border-b border-black/5"
         )}
       >
         <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16 flex items-center justify-between h-16 lg:h-20">
@@ -129,7 +129,7 @@ export function Header() {
                   "flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-sm transition-colors",
                   pathname.startsWith("/services")
                     ? "text-[#C6F73C]"
-                    : "text-white/70 hover:text-white"
+                    : "text-black/70 hover:text-[#0A0A0A]"
                 )}
                 aria-expanded={servicesOpen}
                 aria-haspopup="true"
@@ -145,23 +145,23 @@ export function Header() {
                   onMouseEnter={openServices}
                   onMouseLeave={scheduleCloseServices}
                 >
-                  <div className="rounded-lg border border-white/10 bg-[#111]/95 backdrop-blur-xl shadow-2xl overflow-hidden">
+                  <div className="rounded-lg border border-black/10 bg-[#F5F5F5]/95 backdrop-blur-xl shadow-2xl overflow-hidden">
                     <div className="p-2">
                       {services.map((s) => (
                         <Link
                           key={s.href}
                           href={s.href}
-                          className="flex items-center gap-3 px-3 py-2.5 rounded-sm text-sm text-white/70 hover:text-white hover:bg-white/5 transition-colors group"
+                          className="flex items-center gap-3 px-3 py-2.5 rounded-sm text-sm text-black/70 hover:text-[#0A0A0A] hover:bg-black/[0.03] transition-colors group"
                         >
                           <ArrowRight className="w-3.5 h-3.5 text-[#C6F73C] opacity-0 group-hover:opacity-100 transition-opacity" />
                           {s.title}
                         </Link>
                       ))}
                     </div>
-                    <div className="border-t border-white/10 p-3">
+                    <div className="border-t border-black/10 p-3">
                       <Link
                         href="/quote"
-                        className="flex items-center justify-center gap-2 w-full py-2 rounded-sm bg-[#C6F73C]/10 text-[#C6F73C] text-sm font-medium hover:bg-[#C6F73C]/20 transition-colors"
+                        className="flex items-center justify-center gap-2 w-full py-2 rounded-sm bg-[#C6F73C] text-[#0A0A0A] text-sm font-bold uppercase tracking-wide hover:bg-[#9BD127] transition-colors"
                       >
                         Get a Free Quote
                         <ArrowRight className="w-4 h-4" />
@@ -177,7 +177,7 @@ export function Header() {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
-            <a href={`tel:${siteConfig.contact.phone}`} className="text-sm text-white/70 hover:text-white transition-colors flex items-center gap-1.5">
+            <a href={`tel:${siteConfig.contact.phone}`} className="text-sm text-black/70 hover:text-[#0A0A0A] transition-colors flex items-center gap-1.5">
               <Phone className="w-4 h-4 text-[#C6F73C]" />
               {siteConfig.contact.phoneDisplay}
             </a>
@@ -191,7 +191,7 @@ export function Header() {
 
           {/* Mobile menu toggle */}
           <button
-            className="lg:hidden p-2 text-white/80 hover:text-white transition-colors"
+            className="lg:hidden p-2 text-black/75 hover:text-[#0A0A0A] transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
@@ -209,7 +209,7 @@ export function Header() {
         )}
         aria-hidden={!mobileOpen}
       >
-        <div className="absolute inset-0 bg-[#0A0A0A]/95 backdrop-blur-xl" onClick={() => setMobileOpen(false)} />
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
         <nav
           className={cn(
             "absolute top-[calc(4rem+1px)] right-0 bottom-0 w-full max-w-sm bg-[#0f0f0f] border-l border-white/10 p-6 overflow-y-auto transition-transform duration-300",
@@ -253,13 +253,13 @@ export function Header() {
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>
-            <a href={`tel:${siteConfig.contact.phone}`} className="flex items-center justify-center gap-2 py-3 text-white/70 hover:text-white transition-colors">
+            <a href={`tel:${siteConfig.contact.phone}`} className="flex items-center justify-center gap-2 py-3 text-white/80 hover:text-white transition-colors">
               <Phone className="w-4 h-4 text-[#C6F73C]" />
               {siteConfig.contact.phoneDisplay}
             </a>
           </div>
 
-          <div className="mt-6 pt-6 border-t border-white/10 space-y-2 text-sm text-white/50">
+          <div className="mt-6 pt-6 border-t border-white/10 space-y-2 text-sm text-white/60">
             <p className="flex items-center gap-2"><MapPin className="w-4 h-4 shrink-0" />{siteConfig.address.full}</p>
             <p className="flex items-center gap-2"><Clock className="w-4 h-4 shrink-0" />{siteConfig.hours.weekdays}</p>
           </div>
@@ -275,7 +275,7 @@ function NavLink({ href, active, children }: { href: string; active: boolean; ch
       href={href}
       className={cn(
         "px-4 py-2 text-sm font-medium rounded-sm transition-colors",
-        active ? "text-[#C6F73C]" : "text-white/70 hover:text-white"
+        active ? "text-[#C6F73C]" : "text-black/70 hover:text-[#0A0A0A]"
       )}
     >
       {children}

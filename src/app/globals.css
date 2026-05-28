@@ -1,28 +1,28 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
 :root {
-  --background: 0 0% 4%;
-  --foreground: 0 0% 98%;
-  --card: 0 0% 7%;
-  --card-foreground: 0 0% 98%;
-  --popover: 0 0% 7%;
-  --popover-foreground: 0 0% 98%;
+  --background: 0 0% 100%;
+  --foreground: 0 0% 4%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 4%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 4%;
   --primary: 75 92% 60%;
   --primary-foreground: 0 0% 4%;
-  --secondary: 0 0% 15%;
-  --secondary-foreground: 0 0% 98%;
-  --muted: 0 0% 12%;
-  --muted-foreground: 0 0% 60%;
+  --secondary: 0 0% 96%;
+  --secondary-foreground: 0 0% 4%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 40%;
   --accent: 75 92% 60%;
   --accent-foreground: 0 0% 4%;
-  --destructive: 0 84% 60%;
+  --destructive: 0 84% 50%;
   --destructive-foreground: 0 0% 98%;
-  --border: 0 0% 15%;
-  --input: 0 0% 12%;
+  --border: 0 0% 90%;
+  --input: 0 0% 96%;
   --ring: 75 92% 60%;
-  --radius: 0.5rem;
+  --radius: 0.25rem;
   --font-inter: "Inter", system-ui, sans-serif;
-  --font-bebas: "Bebas Neue", Impact, sans-serif;
+  --font-space-grotesk: "Space Grotesk", "Inter", system-ui, sans-serif;
 }
 
 * {
@@ -34,28 +34,42 @@ html {
 }
 
 body {
-  background: #0a0a0a;
-  color: #fafafa;
+  background: #ffffff;
+  color: #0a0a0a;
   font-family: var(--font-inter), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Display headings — H1 and H2 are uppercase Space Grotesk by default */
+h1,
+h2,
+.font-display {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+/* H3 stays sentence case (used for card titles, FAQ questions, etc.) */
+h3 {
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #f4f4f4;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2a2a2a;
-  border-radius: 3px;
+  background: #d4d4d4;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #C6F73C;
+  background: #9bd127;
 }
 
 :focus-visible {
@@ -64,8 +78,8 @@ body {
 }
 
 ::selection {
-  background: rgba(198, 247, 60, 0.3);
-  color: #fff;
+  background: rgba(198, 247, 60, 0.4);
+  color: #0a0a0a;
 }
 
 @media (prefers-reduced-motion: reduce) {

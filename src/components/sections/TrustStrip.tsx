@@ -14,14 +14,14 @@ const badges = [
 
 export function TrustStrip() {
   return (
-    <section className="bg-[#111] border-y border-white/5 py-5 relative overflow-hidden">
+    <section className="bg-[#F5F5F5] border-y border-black/5 py-5 relative overflow-hidden">
       {/* Fade edges */}
-      <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#111] to-transparent z-10 pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#111] to-transparent z-10 pointer-events-none" />
+      <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#F5F5F5] to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#F5F5F5] to-transparent z-10 pointer-events-none" />
 
       <Marquee speed={45}>
         {badges.map(({ icon: Icon, label }) => (
-          <div key={label} className="flex items-center gap-2.5 text-white/60 shrink-0">
+          <div key={label} className="flex items-center gap-2.5 text-black/60 shrink-0">
             <Icon className="w-4 h-4 text-[#C6F73C]" />
             <span className="text-xs sm:text-sm font-medium whitespace-nowrap">{label}</span>
           </div>

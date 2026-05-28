@@ -112,11 +112,11 @@ export function QuoteForm() {
         <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", duration: 0.5 }}>
           <CheckCircle className="w-20 h-20 text-[#C6F73C] mx-auto mb-6" />
         </motion.div>
-        <h2 className="text-3xl font-black text-white mb-3">Quote Request Received!</h2>
-        <p className="text-white/60 max-w-md mx-auto text-lg">
+        <h2 className="text-3xl font-black text-[#0A0A0A] mb-3">Quote Request Received!</h2>
+        <p className="text-black/60 max-w-md mx-auto text-lg">
           We&apos;ll review your project details and get back to you within one business day with a detailed quote.
         </p>
-        <p className="text-white/40 text-sm mt-4">
+        <p className="text-black/40 text-sm mt-4">
           Need it faster? Call <a href="tel:+15627339672" className="text-[#C6F73C] hover:underline">(562) 733-9672</a>
         </p>
       </div>
@@ -127,7 +127,7 @@ export function QuoteForm() {
     <div>
       {/* Progress steps */}
       <div className="flex items-center justify-between mb-10 relative">
-        <div className="absolute top-4 left-0 right-0 h-0.5 bg-white/10" />
+        <div className="absolute top-4 left-0 right-0 h-0.5 bg-black/5" />
         <div
           className="absolute top-4 left-0 h-0.5 bg-[#C6F73C] transition-all duration-500"
           style={{ width: `${(step / (steps.length - 1)) * 100}%` }}
@@ -140,13 +140,13 @@ export function QuoteForm() {
                 i < step
                   ? "bg-[#C6F73C] border-[#C6F73C] text-[#0A0A0A]"
                   : i === step
-                  ? "bg-[#0A0A0A] border-[#C6F73C] text-[#C6F73C]"
-                  : "bg-[#0A0A0A] border-white/20 text-white/30"
+                  ? "bg-white border-[#C6F73C] text-[#C6F73C]"
+                  : "bg-white border-black/15 text-[#0A0A0A]/30"
               )}
             >
               {i < step ? "✓" : i + 1}
             </div>
-            <span className={cn("text-xs font-medium hidden sm:block", i === step ? "text-white" : "text-white/30")}>
+            <span className={cn("text-xs font-medium hidden sm:block", i === step ? "text-[#0A0A0A]" : "text-[#0A0A0A]/30")}>
               {label}
             </span>
           </div>
@@ -160,8 +160,8 @@ export function QuoteForm() {
           {/* Step 0: Service type */}
           {step === 0 && (
             <motion.div key="step0" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-              <h2 className="text-2xl font-black text-white mb-2">What service do you need?</h2>
-              <p className="text-white/50 mb-6">Select the service you&apos;re interested in</p>
+              <h2 className="text-2xl font-black text-[#0A0A0A] mb-2">What service do you need?</h2>
+              <p className="text-black/55 mb-6">Select the service you&apos;re interested in</p>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {serviceTypes.map(({ id, label, icon: Icon }) => (
                   <button
@@ -171,8 +171,8 @@ export function QuoteForm() {
                     className={cn(
                       "flex flex-col items-center gap-3 p-5 rounded-lg border-2 transition-all duration-200 text-sm font-medium text-center",
                       serviceType === id
-                        ? "border-[#C6F73C] bg-[#C6F73C]/10 text-white"
-                        : "border-white/10 bg-white/5 text-white/60 hover:border-white/30 hover:text-white"
+                        ? "border-[#C6F73C] bg-[#C6F73C]/10 text-[#0A0A0A]"
+                        : "border-black/10 bg-black/[0.03] text-black/60 hover:border-black/20 hover:text-[#0A0A0A]"
                     )}
                   >
                     <Icon className="w-6 h-6" />
@@ -192,8 +192,8 @@ export function QuoteForm() {
           {/* Step 1: Project details */}
           {step === 1 && (
             <motion.div key="step1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-              <h2 className="text-2xl font-black text-white mb-2">Project Details</h2>
-              <p className="text-white/50 mb-6">Help us understand your project</p>
+              <h2 className="text-2xl font-black text-[#0A0A0A] mb-2">Project Details</h2>
+              <p className="text-black/55 mb-6">Help us understand your project</p>
               <div className="space-y-4">
                 {/* Car wrap / Luxury car wrap */}
                 {(isCarWrap || isLuxury) && (
@@ -356,8 +356,8 @@ export function QuoteForm() {
           {/* Step 2: Contact info */}
           {step === 2 && (
             <motion.div key="step2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-              <h2 className="text-2xl font-black text-white mb-2">Your Contact Info</h2>
-              <p className="text-white/50 mb-6">How can we reach you with your quote?</p>
+              <h2 className="text-2xl font-black text-[#0A0A0A] mb-2">Your Contact Info</h2>
+              <p className="text-black/55 mb-6">How can we reach you with your quote?</p>
               <div className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="name">Full Name *</Label>
@@ -391,8 +391,8 @@ export function QuoteForm() {
           {/* Step 3: Review & submit */}
           {step === 3 && (
             <motion.div key="step3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-              <h2 className="text-2xl font-black text-white mb-2">Review & Submit</h2>
-              <p className="text-white/50 mb-6">Confirm your details before submitting</p>
+              <h2 className="text-2xl font-black text-[#0A0A0A] mb-2">Review & Submit</h2>
+              <p className="text-black/55 mb-6">Confirm your details before submitting</p>
               <div className="space-y-3 mb-6">
                 {[
                   ["Service", serviceTypes.find(s => s.id === getValues("serviceType"))?.label],
@@ -402,8 +402,8 @@ export function QuoteForm() {
                   ["Notes", getValues("notes")],
                 ].map(([label, value]) => value ? (
                   <div key={label} className="flex gap-3 text-sm">
-                    <span className="text-white/40 w-20 shrink-0">{label}</span>
-                    <span className="text-white">{value}</span>
+                    <span className="text-black/40 w-20 shrink-0">{label}</span>
+                    <span className="text-[#0A0A0A]">{value}</span>
                   </div>
                 ) : null)}
               </div>

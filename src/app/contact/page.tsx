@@ -50,14 +50,14 @@ export default function ContactPage() {
       />
 
       {/* Hero */}
-      <section className="py-20 bg-[#0A0A0A] border-b border-white/5">
+      <section className="py-20 bg-white border-b border-black/5">
         <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16 text-center">
           <FadeUp>
             <p className="text-[#C6F73C] text-sm font-semibold tracking-[0.2em] uppercase mb-4">Get In Touch</p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-4">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#0A0A0A] mb-4">
               Let&apos;s Talk About Your Project
             </h1>
-            <p className="text-white/60 text-xl max-w-2xl mx-auto">
+            <p className="text-black/60 text-xl max-w-2xl mx-auto">
               Free consultations. Honest quotes. No pressure. We&apos;re here Mon–Sat, 9AM–6PM.
             </p>
           </FadeUp>
@@ -65,14 +65,14 @@ export default function ContactPage() {
       </section>
 
       {/* Contact section */}
-      <section className="py-20 bg-[#0A0A0A]">
+      <section className="py-20 bg-white">
         <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Form */}
             <FadeUp>
-              <div className="bg-[#111] rounded-2xl border border-white/10 p-8">
-                <h2 className="text-2xl font-black text-white mb-2">Send Us a Message</h2>
-                <p className="text-white/50 text-sm mb-6">We&apos;ll reply within one business day.</p>
+              <div className="bg-[#F5F5F5] rounded-2xl border border-black/10 p-8">
+                <h2 className="text-2xl font-black text-[#0A0A0A] mb-2">Send Us a Message</h2>
+                <p className="text-black/55 text-sm mb-6">We&apos;ll reply within one business day.</p>
                 <ContactForm />
               </div>
             </FadeUp>
@@ -80,8 +80,8 @@ export default function ContactPage() {
             {/* Contact details */}
             <FadeUp delay={0.2}>
               <div className="space-y-6">
-                <div className="bg-[#111] rounded-2xl border border-white/10 p-8">
-                  <h2 className="text-xl font-black text-white mb-6">Contact Information</h2>
+                <div className="bg-[#F5F5F5] rounded-2xl border border-black/10 p-8">
+                  <h2 className="text-xl font-black text-[#0A0A0A] mb-6">Contact Information</h2>
                   <div className="space-y-5">
                     <a
                       href={`tel:${siteConfig.contact.phone}`}
@@ -91,8 +91,8 @@ export default function ContactPage() {
                         <Phone className="w-5 h-5 text-[#C6F73C]" />
                       </div>
                       <div>
-                        <p className="text-xs text-white/40 uppercase tracking-wide mb-1">Phone</p>
-                        <p className="text-white font-semibold group-hover:text-[#C6F73C] transition-colors">
+                        <p className="text-xs text-black/40 uppercase tracking-wide mb-1">Phone</p>
+                        <p className="text-[#0A0A0A] font-semibold group-hover:text-[#C6F73C] transition-colors">
                           {siteConfig.contact.phoneDisplay}
                         </p>
                       </div>
@@ -106,8 +106,8 @@ export default function ContactPage() {
                         <Mail className="w-5 h-5 text-[#C6F73C]" />
                       </div>
                       <div>
-                        <p className="text-xs text-white/40 uppercase tracking-wide mb-1">Email</p>
-                        <p className="text-white font-semibold group-hover:text-[#C6F73C] transition-colors">
+                        <p className="text-xs text-black/40 uppercase tracking-wide mb-1">Email</p>
+                        <p className="text-[#0A0A0A] font-semibold group-hover:text-[#C6F73C] transition-colors">
                           {siteConfig.contact.email}
                         </p>
                       </div>
@@ -118,8 +118,8 @@ export default function ContactPage() {
                         <MapPin className="w-5 h-5 text-[#C6F73C]" />
                       </div>
                       <div>
-                        <p className="text-xs text-white/40 uppercase tracking-wide mb-1">Address</p>
-                        <address className="not-italic text-white font-semibold text-sm leading-relaxed">
+                        <p className="text-xs text-black/40 uppercase tracking-wide mb-1">Address</p>
+                        <address className="not-italic text-[#0A0A0A] font-semibold text-sm leading-relaxed">
                           {siteConfig.address.street}<br />
                           {siteConfig.address.city}, {siteConfig.address.state} {siteConfig.address.zip}
                         </address>
@@ -131,15 +131,15 @@ export default function ContactPage() {
                         <Clock className="w-5 h-5 text-[#C6F73C]" />
                       </div>
                       <div>
-                        <p className="text-xs text-white/40 uppercase tracking-wide mb-1">Hours</p>
-                        <p className="text-white font-semibold text-sm">{siteConfig.hours.weekdays}</p>
-                        <p className="text-white/50 text-sm">{siteConfig.hours.weekend}</p>
+                        <p className="text-xs text-black/40 uppercase tracking-wide mb-1">Hours</p>
+                        <p className="text-[#0A0A0A] font-semibold text-sm">{siteConfig.hours.weekdays}</p>
+                        <p className="text-black/55 text-sm">{siteConfig.hours.weekend}</p>
                       </div>
                     </div>
                   </div>
 
-                  <div className="mt-6 pt-6 border-t border-white/10">
-                    <p className="text-xs text-white/40 uppercase tracking-wide mb-3">Follow Us</p>
+                  <div className="mt-6 pt-6 border-t border-black/10">
+                    <p className="text-xs text-black/40 uppercase tracking-wide mb-3">Follow Us</p>
                     <div className="flex gap-3">
                       {[
                         { href: siteConfig.social.instagram, label: "Instagram", svg: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg> },
@@ -149,7 +149,7 @@ export default function ContactPage() {
                           key={label}
                           href={href}
                           aria-label={label}
-                          className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-[#C6F73C] hover:border-[#C6F73C]/50 transition-colors"
+                          className="w-9 h-9 rounded-full border border-black/10 flex items-center justify-center text-black/55 hover:text-[#C6F73C] hover:border-[#C6F73C]/50 transition-colors"
                         >
                           {svg}
                         </a>
@@ -159,7 +159,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Map */}
-                <div className="rounded-2xl overflow-hidden border border-white/10 h-56">
+                <div className="rounded-2xl overflow-hidden border border-black/10 h-56">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.012345!2d-117.68970!3d34.07750!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s5505+Moreno+St%2C+Montclair%2C+CA+91763!5e0!3m2!1sen!2sus!4v1"
                     width="100%"

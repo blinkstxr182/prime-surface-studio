@@ -70,8 +70,8 @@ export function ContactForm() {
     return (
       <div className="text-center py-12">
         <CheckCircle className="w-16 h-16 text-[#C6F73C] mx-auto mb-4" />
-        <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
-        <p className="text-white/60">
+        <h3 className="text-2xl font-bold text-[#0A0A0A] mb-2">Message Sent!</h3>
+        <p className="text-black/60">
           Thank you! We&apos;ll get back to you within one business day. For urgent inquiries, call us at{" "}
           <a href="tel:+15627339672" className="text-[#C6F73C] hover:underline">(562) 733-9672</a>.
         </p>

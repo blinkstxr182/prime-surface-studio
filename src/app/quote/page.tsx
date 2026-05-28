@@ -32,45 +32,45 @@ export default function QuotePage() {
         ])}
       />
 
-      <section className="py-20 min-h-screen bg-[#0A0A0A]">
+      <section className="py-20 min-h-screen bg-white">
         <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16">
           <div className="grid lg:grid-cols-5 gap-12">
             {/* Left — trust sidebar */}
             <FadeUp className="lg:col-span-2">
               <div className="lg:sticky lg:top-28">
                 <p className="text-[#C6F73C] text-sm font-semibold tracking-[0.2em] uppercase mb-4">Free Quote</p>
-                <h1 className="text-3xl sm:text-4xl font-black text-white mb-4">
+                <h1 className="text-3xl sm:text-4xl font-black text-[#0A0A0A] mb-4">
                   Get Your Free, No-Obligation Quote
                 </h1>
-                <p className="text-white/60 mb-8 leading-relaxed">
+                <p className="text-black/60 mb-8 leading-relaxed">
                   Tell us about your project and we&apos;ll send you a detailed, itemized quote within one business day. No pressure, no sales tactics — just honest pricing.
                 </p>
 
                 <div className="space-y-3 mb-8">
                   {guarantees.map((g) => (
-                    <div key={g} className="flex items-center gap-3 text-white/70">
+                    <div key={g} className="flex items-center gap-3 text-black/70">
                       <CheckCircle className="w-5 h-5 text-[#C6F73C] shrink-0" />
                       <span className="text-sm">{g}</span>
                     </div>
                   ))}
                 </div>
 
-                <div className="bg-[#111] rounded-xl border border-white/10 p-5">
-                  <p className="text-white/40 text-xs uppercase tracking-wide mb-3">Prefer to call?</p>
+                <div className="bg-[#F5F5F5] rounded-xl border border-black/10 p-5">
+                  <p className="text-black/40 text-xs uppercase tracking-wide mb-3">Prefer to call?</p>
                   <a
                     href={`tel:${siteConfig.contact.phone}`}
-                    className="text-2xl font-black text-[#C6F73C] hover:text-white transition-colors"
+                    className="text-2xl font-black text-[#C6F73C] hover:text-[#0A0A0A] transition-colors"
                   >
                     {siteConfig.contact.phoneDisplay}
                   </a>
-                  <p className="text-white/40 text-xs mt-1">{siteConfig.hours.weekdays}</p>
+                  <p className="text-black/40 text-xs mt-1">{siteConfig.hours.weekdays}</p>
                 </div>
 
-                <div className="mt-6 bg-[#111] rounded-xl border border-white/10 p-5">
-                  <p className="text-white/40 text-xs uppercase tracking-wide mb-2">Trusted Brands</p>
+                <div className="mt-6 bg-[#F5F5F5] rounded-xl border border-black/10 p-5">
+                  <p className="text-black/40 text-xs uppercase tracking-wide mb-2">Trusted Brands</p>
                   <div className="flex flex-wrap gap-2">
                     {["XPEL", "3M", "Avery Dennison", "KPMF", "Inozetek", "Hexis"].map((b) => (
-                      <span key={b} className="text-xs px-3 py-1 rounded-full border border-white/10 text-white/50">
+                      <span key={b} className="text-xs px-3 py-1 rounded-full border border-black/10 text-black/55">
                         {b}
                       </span>
                     ))}
@@ -81,7 +81,7 @@ export default function QuotePage() {
 
             {/* Right — form */}
             <FadeUp delay={0.15} className="lg:col-span-3">
-              <div className="bg-[#111] rounded-2xl border border-white/10 p-6 sm:p-8">
+              <div className="bg-[#F5F5F5] rounded-2xl border border-black/10 p-6 sm:p-8">
                 <QuoteForm />
               </div>
             </FadeUp>

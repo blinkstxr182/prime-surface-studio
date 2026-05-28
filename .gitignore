@@ -38,6 +38,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Local dev config (Claude Code preview settings)
+.claude/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

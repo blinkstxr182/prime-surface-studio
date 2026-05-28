@@ -44,11 +44,11 @@ function StatItem({ stat, trigger }: { stat: Stat; trigger: boolean }) {
   const count = useCounter(stat.value, 2000, trigger);
   return (
     <div className="text-center">
-      <div className="text-4xl sm:text-5xl font-black text-white mb-2">
+      <div className="text-4xl sm:text-5xl font-black text-[#0A0A0A] mb-2">
         {count.toLocaleString()}
         <span className="text-[#C6F73C]">{stat.suffix}</span>
       </div>
-      <p className="text-white/50 text-sm uppercase tracking-wide">{stat.label}</p>
+      <p className="text-black/55 text-sm uppercase tracking-wide">{stat.label}</p>
     </div>
   );
 }
@@ -67,7 +67,7 @@ export function StatsCounter() {
   }, []);
 
   return (
-    <section className="py-20 bg-[#0A0A0A] border-y border-white/5" ref={ref}>
+    <section className="py-20 bg-white border-y border-black/5" ref={ref}>
       <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16">
         <FadeUp className="grid grid-cols-2 lg:grid-cols-4 gap-10">
           {stats.map((stat) => (

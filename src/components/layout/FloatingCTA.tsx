@@ -20,10 +20,10 @@ export function FloatingCTA() {
         visible ? "translate-y-0" : "translate-y-full"
       )}
     >
-      <div className="flex border-t border-white/10 bg-[#0A0A0A]/95 backdrop-blur-xl">
+      <div className="flex border-t border-black/10 bg-white/95 backdrop-blur-xl">
         <a
           href={`tel:${siteConfig.contact.phone}`}
-          className="flex-1 flex items-center justify-center gap-2 py-4 text-sm font-semibold text-white hover:bg-white/5 transition-colors border-r border-white/10"
+          className="flex-1 flex items-center justify-center gap-2 py-4 text-sm font-semibold text-[#0A0A0A] hover:bg-black/[0.03] transition-colors border-r border-black/10"
         >
           <Phone className="w-4 h-4 text-[#C6F73C]" />
           Call Now

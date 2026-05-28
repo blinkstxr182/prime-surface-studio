@@ -14,11 +14,11 @@ export function TestimonialsSection() {
   const t = testimonials[current];
 
   return (
-    <section className="py-24 bg-[#111] border-y border-white/5 overflow-hidden">
+    <section className="py-24 bg-[#F5F5F5] border-y border-black/5 overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16">
         <FadeUp className="text-center mb-16">
           <p className="text-[#C6F73C] text-sm font-semibold tracking-[0.2em] uppercase mb-3">What Clients Say</p>
-          <h2 className="text-3xl sm:text-4xl font-black text-white">Trusted by the Inland Empire</h2>
+          <h2 className="text-3xl sm:text-4xl font-black text-[#0A0A0A]">Trusted by the Inland Empire</h2>
         </FadeUp>
 
         <div className="relative">
@@ -39,14 +39,14 @@ export function TestimonialsSection() {
               </div>
 
               {/* Quote */}
-              <blockquote className="text-lg sm:text-xl text-white/80 leading-relaxed mb-8 max-w-2xl mx-auto">
+              <blockquote className="text-lg sm:text-xl text-black/75 leading-relaxed mb-8 max-w-2xl mx-auto">
                 &ldquo;{t.text}&rdquo;
               </blockquote>
 
               {/* Author */}
               <div>
-                <p className="font-bold text-white">{t.name}</p>
-                <p className="text-white/40 text-sm">{t.location}</p>
+                <p className="font-bold text-[#0A0A0A]">{t.name}</p>
+                <p className="text-black/40 text-sm">{t.location}</p>
                 <p className="text-[#C6F73C] text-xs tracking-wide uppercase mt-1">{t.service}</p>
               </div>
             </motion.div>
@@ -56,7 +56,7 @@ export function TestimonialsSection() {
           <div className="flex items-center justify-center gap-4 mt-10">
             <button
               onClick={prev}
-              className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:border-[#C6F73C]/50 transition-colors"
+              className="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center text-black/60 hover:text-[#0A0A0A] hover:border-[#C6F73C]/50 transition-colors"
               aria-label="Previous testimonial"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -66,14 +66,14 @@ export function TestimonialsSection() {
                 <button
                   key={i}
                   onClick={() => setCurrent(i)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${i === current ? "bg-[#C6F73C] w-6" : "bg-white/20"}`}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${i === current ? "bg-[#C6F73C] w-6" : "bg-black/10"}`}
                   aria-label={`Go to testimonial ${i + 1}`}
                 />
               ))}
             </div>
             <button
               onClick={next}
-              className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:border-[#C6F73C]/50 transition-colors"
+              className="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center text-black/60 hover:text-[#0A0A0A] hover:border-[#C6F73C]/50 transition-colors"
               aria-label="Next testimonial"
             >
               <ChevronRight className="w-5 h-5" />

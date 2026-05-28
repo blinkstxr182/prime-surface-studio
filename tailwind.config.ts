@@ -56,7 +56,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-bebas)", "Impact", "sans-serif"],
+        display: ["var(--font-space-grotesk)", "var(--font-inter)", "system-ui", "sans-serif"],
       },
       fontSize: {
         "display-xl": ["clamp(3.5rem,8vw,7rem)", { lineHeight: "0.95", letterSpacing: "-0.02em" }],
@@ -66,13 +66,14 @@ const config: Config = {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        "hero-gradient": "linear-gradient(135deg, rgba(10,10,10,0.95) 0%, rgba(198,247,60,0.08) 100%)",
-        "card-gradient": "linear-gradient(135deg, rgba(26,26,26,0.9) 0%, rgba(42,42,42,0.4) 100%)",
+        "hero-gradient": "linear-gradient(135deg, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0.4) 100%)",
+        "card-gradient": "linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(248,248,248,1) 100%)",
       },
       boxShadow: {
-        "accent-glow": "0 0 30px rgba(198,247,60,0.25)",
-        "accent-glow-lg": "0 0 60px rgba(198,247,60,0.3)",
-        "card-hover": "0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(198,247,60,0.1)",
+        "accent-glow": "0 0 30px rgba(198,247,60,0.4)",
+        "accent-glow-lg": "0 0 60px rgba(198,247,60,0.5)",
+        "card-hover": "0 20px 50px rgba(0,0,0,0.08), 0 6px 20px rgba(0,0,0,0.04)",
+        "card-elevated": "0 10px 30px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04)",
       },
       borderRadius: {
         lg: "var(--radius)",

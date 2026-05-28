@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
@@ -15,6 +15,13 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -61,7 +68,7 @@ const gAdsId = process.env.NEXT_PUBLIC_GADS_ID ?? "AW-18103141318";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
         <JsonLd data={localBusinessSchema()} />
         <JsonLd data={organizationSchema()} />
@@ -90,7 +97,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </>
         )}
       </head>
-      <body className="min-h-screen flex flex-col bg-[#0A0A0A] text-white">
+      <body className="min-h-screen flex flex-col bg-white text-[#0A0A0A]">
         {/* GTM noscript */}
         {gtmId && (
           <noscript>
