@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Phone, FileText } from "lucide-react";
@@ -17,10 +17,15 @@ export function FloatingCTA() {
     <div
       className={cn(
         "fixed bottom-0 left-0 right-0 z-50 lg:hidden transition-transform duration-500",
+        // The outer wrapper extends into the iOS safe area at the bottom so
+        // the white background fills the home-indicator strip rather than
+        // leaving a visible gap below the buttons.
+        "bg-white/95 backdrop-blur-xl border-t border-black/10",
+        "pb-[env(safe-area-inset-bottom)]",
         visible ? "translate-y-0" : "translate-y-full"
       )}
     >
-      <div className="flex border-t border-black/10 bg-white/95 backdrop-blur-xl">
+      <div className="flex">
         <a
           href={`tel:${siteConfig.contact.phone}`}
           className="flex-1 flex items-center justify-center gap-2 py-4 text-sm font-semibold text-[#0A0A0A] hover:bg-black/[0.03] transition-colors border-r border-black/10"
