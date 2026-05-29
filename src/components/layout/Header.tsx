@@ -26,7 +26,6 @@ export function Header() {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const pathname = usePathname();
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const lastScrollY = useRef(0);
 
   const openServices = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -38,35 +37,38 @@ export function Header() {
   };
 
   // Auto-hide on scroll-down, show on scroll-up.
-  // Threshold avoids hiding the header on tiny scroll jitter or rubber-band.
+  // Uses requestAnimationFrame so the scroll handler stays cheap and
+  // syncs visual state with the browser's paint cadence. Reacts on any
+  // direction change — even small up-scrolls bring the header back.
   useEffect(() => {
-    const SHOW_THRESHOLD = 80;  // px from top below which auto-hide is active
-    const DELTA = 8;            // minimum scroll delta before reacting
+    let ticking = false;
+    let lastY = window.scrollY;
 
-    const handleScroll = () => {
-      const currentY = window.scrollY;
+    const update = () => {
+      const currentY = Math.max(0, window.scrollY);
       setScrolled(currentY > 20);
 
-      // Always show header near the top
-      if (currentY < SHOW_THRESHOLD) {
+      if (currentY < 80) {
+        // Always visible near the top
         setHidden(false);
-        lastScrollY.current = currentY;
-        return;
-      }
-
-      const diff = currentY - lastScrollY.current;
-      if (Math.abs(diff) < DELTA) return;  // ignore tiny scrolls
-
-      if (diff > 0) {
-        // scrolling down → hide
+      } else if (currentY > lastY) {
+        // Any downward movement → retract
         setHidden(true);
-        // Also close any open dropdowns when header retracts
         setServicesOpen(false);
-      } else {
-        // scrolling up → show
+      } else if (currentY < lastY) {
+        // Any upward movement → reveal
         setHidden(false);
       }
-      lastScrollY.current = currentY;
+
+      lastY = currentY;
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
