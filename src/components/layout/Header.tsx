@@ -99,10 +99,12 @@ export function Header() {
         )}
       >
         <div className="relative w-full px-4 sm:px-6 lg:px-10 xl:px-16 flex items-center justify-between h-20 lg:h-24">
-          {/* Logo — absolutely centered on mobile, left-aligned on desktop */}
+          {/* Logo — absolutely centered on mobile, left-aligned on desktop.
+              Using max-lg: variant so the absolute-centering rules only apply
+              below the lg breakpoint and do not conflict with desktop layout. */}
           <Link
             href="/"
-            className="absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0 flex items-center shrink-0"
+            className="max-lg:absolute max-lg:left-1/2 max-lg:-translate-x-1/2 flex items-center shrink-0"
             aria-label="Prime Surface Studio — Home"
           >
             <div className="relative h-14 lg:h-16 w-[200px] lg:w-[260px]">
@@ -111,7 +113,7 @@ export function Header() {
                 alt="Prime Surface Studio — Premium vehicle wraps, UTV wraps and brand design in Montclair CA"
                 fill
                 sizes="(max-width: 1024px) 200px, 260px"
-                className="object-contain object-left"
+                className="object-contain object-center lg:object-left"
                 priority
               />
             </div>
