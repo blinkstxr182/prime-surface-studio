@@ -30,7 +30,7 @@ export function Footer() {
           {/* Col 1 — Brand */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex mb-5" aria-label="Prime Surface Studio — Home">
-              <div className="relative w-[180px] h-12">
+              <div className="relative w-[220px] h-14">
                 <Image src="/logo.png" alt="Prime Surface Studio logo" fill sizes="180px" className="object-contain object-left" />
               </div>
             </Link>

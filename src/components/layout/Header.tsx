@@ -98,15 +98,19 @@ export function Header() {
             : "bg-white/80 backdrop-blur-md border-b border-black/5"
         )}
       >
-        <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-16 flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center shrink-0" aria-label="Prime Surface Studio — Home">
-            <div className="relative h-10 lg:h-12 w-[150px] lg:w-[180px]">
+        <div className="relative w-full px-4 sm:px-6 lg:px-10 xl:px-16 flex items-center justify-between h-20 lg:h-24">
+          {/* Logo — absolutely centered on mobile, left-aligned on desktop */}
+          <Link
+            href="/"
+            className="absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0 flex items-center shrink-0"
+            aria-label="Prime Surface Studio — Home"
+          >
+            <div className="relative h-14 lg:h-16 w-[200px] lg:w-[260px]">
               <Image
                 src="/logo.png"
                 alt="Prime Surface Studio — Premium vehicle wraps, UTV wraps and brand design in Montclair CA"
                 fill
-                sizes="180px"
+                sizes="(max-width: 1024px) 200px, 260px"
                 className="object-contain object-left"
                 priority
               />
@@ -212,7 +216,7 @@ export function Header() {
         <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
         <nav
           className={cn(
-            "absolute top-[calc(4rem+1px)] right-0 bottom-0 w-full max-w-sm bg-[#0f0f0f] border-l border-white/10 p-6 overflow-y-auto transition-transform duration-300",
+            "absolute top-[calc(5rem+1px)] right-0 bottom-0 w-full max-w-sm bg-[#0f0f0f] border-l border-white/10 p-6 overflow-y-auto transition-transform duration-300",
             mobileOpen ? "translate-x-0" : "translate-x-full"
           )}
           aria-label="Mobile navigation"
