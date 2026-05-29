@@ -20,11 +20,13 @@ const services = [
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const pathname = usePathname();
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const lastScrollY = useRef(0);
 
   const openServices = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -35,8 +37,38 @@ export function Header() {
     closeTimer.current = setTimeout(() => setServicesOpen(false), 150);
   };
 
+  // Auto-hide on scroll-down, show on scroll-up.
+  // Threshold avoids hiding the header on tiny scroll jitter or rubber-band.
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const SHOW_THRESHOLD = 80;  // px from top below which auto-hide is active
+    const DELTA = 8;            // minimum scroll delta before reacting
+
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      setScrolled(currentY > 20);
+
+      // Always show header near the top
+      if (currentY < SHOW_THRESHOLD) {
+        setHidden(false);
+        lastScrollY.current = currentY;
+        return;
+      }
+
+      const diff = currentY - lastScrollY.current;
+      if (Math.abs(diff) < DELTA) return;  // ignore tiny scrolls
+
+      if (diff > 0) {
+        // scrolling down → hide
+        setHidden(true);
+        // Also close any open dropdowns when header retracts
+        setServicesOpen(false);
+      } else {
+        // scrolling up → show
+        setHidden(false);
+      }
+      lastScrollY.current = currentY;
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -89,13 +121,15 @@ export function Header() {
         </div>
       </div>
 
-      {/* Main header */}
+      {/* Main header — auto-hides on scroll-down, reappears on scroll-up */}
       <header
         className={cn(
-          "sticky top-0 z-50 w-full transition-all duration-300",
+          "sticky top-0 z-50 w-full transition-all duration-300 will-change-transform",
           scrolled
             ? "bg-white/90 backdrop-blur-xl border-b border-black/10 shadow-2xl"
-            : "bg-white/80 backdrop-blur-md border-b border-black/5"
+            : "bg-white/80 backdrop-blur-md border-b border-black/5",
+          // Mobile menu open: never hide the header even if the user scrolls
+          hidden && !mobileOpen ? "-translate-y-full" : "translate-y-0"
         )}
       >
         <div className="relative w-full px-4 sm:px-6 lg:px-10 xl:px-16 flex items-center justify-between h-20 lg:h-24">
